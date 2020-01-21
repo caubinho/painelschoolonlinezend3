@@ -1,0 +1,526 @@
+<?php
+$aula = $this->aula;
+
+
+/**
+ * @var \User\Entity\Aula  $resAula
+ */
+foreach ($aula as $r => $resAula){}
+
+?>
+<!-- page content -->
+<div class="right_col" role="main">
+
+    <div class="">
+        <div class="page-title">
+            <div class="title_left" style="width:100%;">
+                <h3>Aula: <?php echo $resAula->getTitulo();?></h3>
+
+                <div class="row">
+                    <div class="col-sm-11">
+
+                    </div>
+
+                    <div class="col-sm-1">
+
+                        <a class="btn btn-primary pull-right" href="javascript:history.back()">
+                            <i class="fa fa-reply"></i> Voltar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="">
+                    <div class="x_content">
+
+                        <br />
+                        <div class="row">
+
+                            <div class="clearfix"></div>
+
+
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                        <div class="x_panel">
+                                            <?php
+                                            $video = $this->destaque;
+
+                                            if($video == null){
+                                                ?>
+                                            <div class="x_title">
+                                                <h2>Sem vídeo no momento!</h2>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                                <?php
+                                            }else{
+                                                foreach ($video as $dadosVideo => $dados) {
+                                                }
+
+
+                                                ?>
+
+                                                <div class="x_title">
+                                                    <h2><?php echo $dados->getTitulo(); ?></h2>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            <div class="x_content">
+                                                <br/>
+
+                                                <?php
+
+
+                                                if ($dados->getTipo() == 'YouTube') {
+
+                                                    $youtube = explode('=', $dados->getLink());
+
+                                                    echo '<iframe width="100%" height="360" src="https://www.youtube.com/embed/' . $youtube[1] . '" frameborder="0" allowfullscreen></iframe>';
+
+
+                                                } elseif ($dados->getTipo() == 'Vimeo') {
+
+                                                    $vimeo = explode('/', $dados->getLink());
+
+                                                    echo '<iframe src="https://player.vimeo.com/video/' . $vimeo[3] . '?title=0&byline=0&portrait=0" width="100%" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+
+                                                } else {
+
+                                                    ?>
+
+                                                    <video  controls preload="none" width="100%" height="360" style="width: 100%" poster="<?php echo $this->basePath() . '/img/player_live.jpg'; ?>">
+                                                        <source src="<?php echo $this->basePath() . '/video/' . $dados->getFile(); ?>" type="video/mp4">
+
+                                                        <!-- Tracks need an ending tag thanks to IE9 -->
+
+                                                    </video>
+
+                                                    <?php
+                                                };
+
+                                                ?>
+
+                                            </div>
+
+                                            <?php
+                                            }
+                                            ?>
+                                            </div>
+                                            
+                                        </div>
+
+                            <div class="col-md-3 col-xs-12">
+
+                                <!--listar videos complementares-->
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                                    <h2>Vídeo</h2>
+
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                        <div class="x_content">
+                                                    <br />
+                                            <div class="box-body">
+
+                                                        <div class="row">
+
+                                                            <?php
+
+                                                            $video = $this->videos;
+
+                                                                    /** @var \User\Entity\Video $listarVideos */
+                                                            foreach ($video as $listarVideos) {
+
+                                                                            ?>
+                                                                <div class="col-md-12 col-xs-12">
+                                                                    <a class="btn btn-default" style=" width:100%; text-align: left; overflow: hidden" href="<?php echo $this->url('admin/modulo', ['action' => 'aula'], ['force_canonical' => true, 'query' => ['code' => $resAula->getCode(), 'turma' => $this->turma, 'video' => $listarVideos->getCodigo()]]); ?>" <i class="fa fa-play-circle-o"></i> <?php echo $listarVideos->getTitulo(); ?>
+                                                                                </a>
+                                                                            </div>
+
+                                                                            <?php
+
+
+                                                            }
+                                                            ?>
+
+                                                        </div>
+
+
+
+
+                                                    </div><!-- /.box-body -->
+                                                </div>
+                                </div>
+
+                                <!--end videos complementares-->
+
+                                <!--enviar trabalho-->
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Enviar Trabalho</h2>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <br />
+                                        <div class="box-body">
+
+                                            <div class="row">
+
+                                              <div class="col-md-12 col-xs-12">
+
+                                                  <a href="<?php
+
+                                                  echo $this->url('admin/trabalho',
+                                                      [
+                                                            'action' => 'new'],
+
+                                                            [
+                                                                'force_canonical' => true, 'query' =>
+
+                                                                [
+                                                                    'aula'  => $resAula->getCode(),
+                                                                    'turma' => $this->turma,
+                                                                    'aluno' => $this->identity()->getId(),
+                                                            ]]
+
+                                                      );
+
+
+                                                  ?>" class="btn btn-app">
+                                                      <span class="badge bg-blue"></span>
+                                                      <i class="fa fa-files-o"></i> Enviar Trabalho
+                                                  </a>
+
+
+
+                                              </div>
+
+
+
+                                            </div>
+
+
+
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                                <!--end enviar trabalho-->
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="row">
+                        <!-- page content -->
+
+                        <div class="clearfix"></div>
+
+                        <!--slide da aula-->
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Slides</h2>
+                                    <ul class="nav navbar-right panel_toolbox pull-right">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <ul class="to_do">
+
+                                        <?php
+                                        $aulaSlide = $this->aula;
+
+                                        //listo todos videos do cronograma
+                                        foreach ($aulaSlide as $slide) {
+
+                                            //busco todos videos iguais o cronograma
+
+
+
+                                                    ?>
+
+                                                    <li>
+
+                                                        <div class="row">
+
+                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                                               Slide da Aula
+                                                            </div>
+
+                                                            <div class="col-md-3 col-sm-3 col-xs-12">
+
+                                                                <a title="Baixar Arquivo" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/baixar.php?c=material&f=<?php echo $slide->getFile(); ?>">
+                                                                    Baixar
+
+                                                                    <i class="fa fa-download"></i>
+
+
+                                                                </a>
+                                                            </div>
+
+
+                                                        </div>
+
+
+                                                    </li>
+
+                                                    <?php
+
+
+                                        }
+                                        ?>
+
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end slide-->
+
+                        <!--atividades-->
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Atividades</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <div class="">
+                                        <ul class="to_do">
+
+                                            <?php
+
+                                            //listo todos videos do cronograma
+                                            /** @var \User\Entity\Atividade $atividade */
+                                            foreach ($this->atividade as $atividade) {
+
+                                                        ?>
+                                                        <li>
+                                                            <div class="row">
+                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                                                    <?php echo $atividade->getTitulo();?>
+                                                                </div>
+
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+
+                                                                    <a title="Baixar Arquivo" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/baixar.php?c=atividade&f=<?php echo $atividade->getFile(); ?>">
+                                                                        Baixar
+
+                                                                        <i class="fa fa-download"></i>
+
+
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                        </li>
+                                                        <?php
+
+                                            }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end atividadades-->
+                        <div class="clearfix"></div>
+
+                        <!-- material-->
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Material</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                </li>
+                                                <li>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <div class="">
+                                        <ul class="to_do">
+                                            <?php
+                                            foreach($this->material as $material) {
+
+
+
+
+                                                        ?>
+
+                                                        <li>
+                                                            <div class="row">
+
+                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                                                    <?php echo $material->getTitulo();?>
+                                                                </div>
+
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+
+                                                                    <a title="Baixar Arquivo" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/baixar.php?c=material&f=<?php echo $material->getFile(); ?>">
+                                                                        Baixar
+
+                                                                        <i class="fa fa-download"></i>
+
+
+                                                                    </a>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </li>
+                                                        <?php
+
+                                            }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end material-->
+
+                        <!--links -->
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Links</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                </li>
+                                                <li>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <div class="">
+                                        <ul class="to_do">
+
+                                            <?php
+
+                                            foreach ($this->link as $link) {
+
+                                                        ?>
+
+                                                        <li>
+                                                            <div class="row">
+                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                    <a target="_blank" href="<?php echo $link->getUrl(); ?>"> <?php echo $link->getUrl(); ?></a>
+                                                                </div>
+
+                                                            </div>
+                                                        </li>
+                                                        <?php
+
+
+                                            }
+                                            ?>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end links-->
+
+                        <!-- /page content -->
+                        </div>
+
+
+                        <div class="row">
+                            
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Palavra do Professor</h2>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+
+
+                                            <?php
+                                            $aula = $this->aula;
+
+                                            $i = 1;
+                                            foreach ($aula as $resAula) {
+
+
+
+                                        
+                                                    ?>
+
+                                                        <div class="block">
+                                                            <div class="block_content">
+                                                                <?php
+
+                                                                echo $resAula->getTexto();
+                                                                ?>
+                                                            </div>
+                                                        </div>
+
+
+                                                    <?php
+                                                   
+                                                }
+
+                                                ?>
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->

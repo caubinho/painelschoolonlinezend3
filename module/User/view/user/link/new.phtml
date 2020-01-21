@@ -1,0 +1,160 @@
+<?php
+$this->headTitle('Cadastro Link');
+
+
+$titulo = $form->get('titulo')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Digite um Título'
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$url = $form->get('url')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'http://'
+])->setLabelAttributes(['class' => 'control-label']);
+
+$form->get('status')->setAttributes([
+    'class'=>'form-control'
+]);
+
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary', 'value' => 'Salvar']);
+
+$form->prepare();
+?>
+
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Link</h3>
+
+                <div class="clearfix"></div>
+                <p>
+                    <a class="btn btn-default" href="
+    <?= $this->url('admin/default', ['controller' => 'link', 'action'=>'new']); ?>">
+                        <i class="fa fa-plus-circle"></i> Novo
+                    </a>
+
+                    <a class="btn btn-default" href="
+    <?= $this->url('admin/default', ['controller' => 'link']); ?>">
+                        <i class="fa fa-navicon"></i> Listar
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Cadastrar</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        <?= $this->form()->openTag($form); ?>
+
+
+
+
+                        <?php $message = $this->formElementErrors($titulo, ['class' => 'help-block']); ?>
+
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Titulo <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                <?= $this->formElement($titulo); ?>
+                                <?= $message ?>
+
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($url, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Url
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($url); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12">Status</label>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <?= $this->formElement($form->get('status')); ?>
+                                <?= $this->formElementErrors($form->get('status')); ?>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-xs-12">
+
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+
+                    <div class="x_content">
+
+
+                        <br />
+
+                        <div class="ln_solid"></div>
+
+                        <div class="form-group">
+
+
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+
+                                <a href="<?php echo $this->url('admin/default', ['controller' => 'link']); ?>"  class="btn btn-danger"><span class="glyphicon glyphicon-remove-sign"></span> Cancelar</a>
+
+                            </div>
+
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <?= $this->formElement($form->get('submit')); ?>
+
+                                <?= $this->form()->closeTag(); ?>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <?php  echo $this->form()->closeTag(); ?>
+
+        </div>
+
+        <!--img destaque-->
+
+        <!--end img destaque-->
+
+
+
+
+    </div>
+</div>
+<!-- /page content -->
+
+<!-- Modal -->
+
+<!--end modal-->
+
+

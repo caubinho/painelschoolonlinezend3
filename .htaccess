@@ -1,0 +1,22 @@
+# Turn on rewrites.
+RewriteEngine on
+
+ 
+# Only apply to URLs on this domain
+RewriteCond %{HTTP_HOST} ^(www.)?avaspp.test$
+ 
+# Only apply to URLs that aren't already under folder.
+RewriteCond %{REQUEST_URI} !^/public/
+ 
+# Don't apply to URLs that go to existing files or folders.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+ 
+# Rewrite all those to insert /folder.
+RewriteRule ^(.*)$ /public/$1
+ 
+# Also redirect the root folder.
+RewriteCond %{HTTP_HOST} ^(www.)?avaspp.test$
+RewriteRule ^(/)?$ /public/index.php [L]
+
+#suPHP_ConfigPath /home/spp/www/ava/spp/spp.ini

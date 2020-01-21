@@ -1,0 +1,18 @@
+<label class="control-label col-md-3 col-sm-3 col-xs-12">Filtrar por Turma:</label>
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <select class="form-control" id="linkTurma">
+        <option>Selecione</option>
+        <?php
+        $turmas = $this->turma;
+        $controller = $this->controller;
+
+        foreach ($turmas as $resTurma){
+
+            ?>
+
+            <option controller="<?php echo  $controller; ?>" name="turma"><?php echo $resTurma->getTitulo(); ?></option>
+
+        <?php } ?>
+
+    </select>
+</div>

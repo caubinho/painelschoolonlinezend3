@@ -1,0 +1,169 @@
+<div class="right_col" role="main">
+    <!-- top tiles -->
+    <div class="row tile_count">
+
+        <?php
+        if ($this->identity()->getRole()->getNome() !== 'Administrador') {
+        } else {
+        ?>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                <span class="count_top"><i class="fa fa-user"></i> Total Alunos</span>
+                <div class="count"><?= $this->countAlunos ?></div>
+                <span class="count_bottom"><i class="green"></i> </span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                <span class="count_top"><i class="fa fa-user"></i> Total Homens</span>
+                <div class="count green"><?= $this->countMasculino; ?></div>
+                    <span class="count_bottom">Ativos</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                <span class="count_top"><i class="fa fa-user"></i> Total Mulheres</span>
+                <div class="count"><?= $this->countFeminino; ?></div>
+                    <span class="count_bottom">Ativos</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                <span class="count_top"><i class="fa fa-user"></i> Total Polos</span>
+                <div class="count"><?= $this->countPolo; ?></div>
+                    <span class="count_bottom">Ativos</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                <span class="count_top"><i class="fa fa-user"></i> Total Turmas</span>
+                <div class="count"><?= $this->countTurma; ?></div>
+                    <span class="count_bottom">Ativas</span>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+    <!-- /top tiles -->
+
+    <br/>
+
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Bem-Vindo(a) ao seu <strong>Ambiente Virtual de Aprendizagem da SPP</strong></h3>
+
+                <div class="clearfix"></div>
+
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+
+
+            <!--carrousel-->
+
+
+
+            <!--end carrousel-->
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+
+
+                    <div class="x_content">
+
+                        <div class="row">
+
+                        <?php
+                        $banner = $this->banner;
+
+                        if(empty($banner)){
+
+                        }else {
+
+                            $i = 1;
+
+                            foreach ($banner as $resBanner) {
+
+
+
+                                    ?>
+
+                                    <div class="col-md-4" style="margin-bottom: 10px">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <a href="javascript:void(0);" onclick="openModal_<?php echo $i; ?>()">
+                                                    <img  class="img-responsive"
+                                                         src="<?php echo $this->basePath() . '/media/' . $resBanner->getFile(); ?>">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                <!--video-->
+                                <div class="modal fade modal-<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!--conteudo video-->
+
+                                                <!--listar videos-->
+                                                <img  class="img-responsive"
+                                                      src="<?php echo $this->basePath() . '/media/' . $resBanner->getFile(); ?>">
+
+                                                <!--end listar-->
+                                                <!--end conteudo-->
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end video-->
+
+                                <script>
+                                    function openModal_<?php echo $i; ?>(){
+                                        $('.modal-<?php echo $i; ?>').modal();
+                                    }
+
+                                </script>
+
+                                <!-- Modal -->
+
+                                    <?php
+
+
+
+                                    if($i % 3 == 0){
+                                        echo " <div class=\"clearfix\"></div>";
+                                    }else{}
+
+                                $i++;
+
+
+
+                            }
+                        }
+                        ?>
+
+                            <!-- For browsers with JavaScript, open the modal. -->
+                            <script>
+                                $(function() {
+                                    $('a[data-modal]').on('click', function() {
+                                        $($(this).data('modal')).modal();
+                                        return false;
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

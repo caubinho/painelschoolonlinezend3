@@ -1,0 +1,59 @@
+<div class="top_nav">
+
+    <div class="nav_menu">
+        <nav class="" role="navigation">
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+            <ul class="nav navbar-nav navbar-left">
+           
+           <li>
+
+
+            </li>
+             </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <?php
+                        $imagem = $this->identity()->getThumb();
+
+                        if(empty($imagem)) {
+
+                            ?>
+
+                        <img src="https://www.gravatar.com/avatar/<?php echo  md5($this->identity()->getEmail());?>" alt="...">
+                            <?php
+                        }else {
+
+                            ?>
+                            <img src="<?php echo $this->basePath();?>/media/thumb/<?php echo $imagem; ?>" alt="...">
+
+                            <?php
+                       }
+                        ?>
+
+
+
+                        <?php echo $this->identity() ;?>
+
+
+
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                        <li><a href="<?php echo $this->url('admin/default',
+                                [ 'controller' => 'users', 'action'=>'perfil','id' => $this->identity()->getId()]);?>">  Perfil</a>
+                        </li>
+
+                        <li><a href="<?php echo $this->url('logout') ?>"><i class="fa fa-sign-out pull-right"></i> Sair</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+</div>

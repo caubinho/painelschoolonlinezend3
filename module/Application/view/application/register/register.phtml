@@ -1,0 +1,385 @@
+<?php
+$this->headTitle('Registro');
+
+
+
+$fullName = $form->get('full_name')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Digite seu nome completo',
+    'required' => true,
+    'autofocus' => true
+
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$email = $form->get('email')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Digite um Email válido',
+    'required' => true,
+    'autofocus' => true
+])
+    ->setLabelAttributes([
+        'class' => 'sr-only'
+    ]);
+
+$fone = $form->get('celular')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => '(99) 99999-9999',
+    'id'            => 'fone',
+    'required' => true,
+    'autofocus' => true
+
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$profissao = $form->get('profissao')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Qual sua profissão?',
+    'required' => true,
+    'autofocus' => true
+
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+
+//------
+$nascimento = $form->get('nascimento')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Nascimento: 99/99/9999',
+    'id'            => 'nascimento',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes(['class' => 'control-label']);
+
+$cpf = $form->get('cpf')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'   => 'CPF: 999.999.999-99',
+    'id'            => 'cpf',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$rg = $form->get('rg')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Digite seu RG',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes(['class' => 'control-label']);
+
+$emissor = $form->get('emissor')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Emissor',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes(['class' => 'control-label']);
+
+$pai = $form->get('pai')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Nome completo do Pai',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes(['class' => 'control-label']);
+
+$mae = $form->get('mae')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Nome completo da Mãe',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes(['class' => 'control-label']);
+
+$formacao = $form->get('formacao')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Formação',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes(['class' => 'control-label']);
+
+//-----
+
+$rua = $form->get('rua')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Rua',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$numero = $form->get('numero')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Numero',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$complemento = $form->get('complemento')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Apto, Bloco...',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$bairro = $form->get('bairro')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Bairro',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$cidade = $form->get('cidade')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Cidade',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$estado = $form->get('estado')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Estado',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$cep = $form->get('cep')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'cep',
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+
+//------
+
+$password = $form->get('password')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Digite uma senha, mínimo 6 digitos',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes(['class' => 'control-label']);
+
+$confirm = $form->get('confirm_password')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'   => 'Confirme sua senha',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes(['class' => 'control-label']);
+?>
+
+<div class="">
+
+    <div id="wrapper">
+        <div id="login" class=" form">
+            <section class="login_content">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+                <?php
+                $flash = $this->flashMessenger();
+                $flash->setMessageOpenFormat('<div%s>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <ul><li>')
+                    ->setMessageSeparatorString('</li><li>')
+                    ->setMessageCloseString('</li></ul></div>');
+
+                echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+                echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
+                echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
+                echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+
+                ?>
+
+
+
+
+
+
+                <form method="POST">
+                    <h1>Registrar-se</h1>
+                    <p>Faça seu pré-cadastro.</p>
+
+                    <?php $message = $this->formElementErrors($fullName, ['class' => 'alert-register']); ?>
+
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+
+                            <?= $this->formElement($fullName); ?>
+                            <?= $message ?>
+
+                        </div>
+                    </div>
+
+
+                    <?php $message = $this->formElementErrors($nascimento, ['class' => 'help-block']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <?= $this->formElement($nascimento); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+                    <?php $message = $this->formElementErrors($cpf, ['class' => 'help-block']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <?= $this->formElement($cpf); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+                    <?php $message = $this->formElementErrors($rg, ['class' => 'help-block']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <?= $this->formElement($rg); ?>
+                            <?= $message ?>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <?= $this->formElement($emissor); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+
+                    <?php $message = $this->formElementErrors($pai, ['class' => 'help-block']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <?= $this->formElement($pai); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+                    <?php $message = $this->formElementErrors($mae, ['class' => 'help-block']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <?= $this->formElement($mae); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+
+
+                    <?php $message = $this->formElementErrors($email, ['class' => 'alert-register']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <?= $this->formElement($email); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+
+                    <?php $message = $this->formElementErrors($fone, ['class' => 'alert-register']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <?= $this->formElement($fone); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+
+                    <?php $message = $this->formElementErrors($profissao, ['class' => 'alert-register']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <?= $this->formElement($profissao); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+                    <?php $message = $this->formElementErrors($rua, ['class' => 'help-block']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <?= $this->formElement($rua); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+                    <?php $message = $this->formElementErrors($numero, ['class' => 'help-block']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <?= $this->formElement($numero); ?>
+                            <?= $message ?>
+                        </div>
+
+
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <?= $this->formElement($complemento); ?>
+                            <?= $message ?>
+                        </div>
+
+                    </div>
+
+                    <?php $message = $this->formElementErrors($bairro, ['class' => 'help-block']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <?= $this->formElement($bairro); ?>
+                            <?= $message ?>
+                        </div>
+
+
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <?= $this->formElement($cidade); ?>
+                            <?= $message ?>
+                        </div>
+
+                    </div>
+
+                    <?php $message = $this->formElementErrors($estado, ['class' => 'help-block']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <?= $this->formElement($estado); ?>
+                            <?= $message ?>
+                        </div>
+
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <?= $this->formElement($cep); ?>
+                            <?= $message ?>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <?php $message = $this->formElementErrors($password, ['class' => 'alert-register']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <?= $this->formElement($password); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+
+
+
+                    <?php $message = $this->formElementErrors($confirm, ['class' => 'alert-register']); ?>
+                    <div class="form-group<?= $message ? " has-error" : "" ?>">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <?= $this->formElement($confirm); ?>
+                            <?= $message ?>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="padding: 0px 10px 0px 10px">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+                        <a class="reset_pass" href="<?= $this->url('login') ?>">Logar</a>
+                    </div>
+                    <div class="clearfix"></div>
+
+
+                    <div class="separator">
+
+                       
+                        <?= $this->formElement($form->get('csrf')) ?>
+
+                        <div class="clearfix"></div>
+                        <br />
+                        <div>
+                            <h1><img src="<?php echo $this->basePath('media/').$this->DadosSite()->dados()->getFile(); ?>"></h1>
+
+                            <p>©<?php echo date('Y'); ?> Todos direitos reservados</p>
+                        </div>
+                    </div>
+                </form>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<?php
+$this->headTitle('Acesso');
+
+
+$form->get('email')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Email cadastrado',
+    'required' => true,
+    'autofocus' => true
+])
+    ->setLabelAttributes([
+        'class' => 'sr-only'
+    ]);
+
+$form->get('password')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Password',
+    'required' => true,
+])
+    ->setLabelAttributes([
+        'class' => 'sr-only'
+    ]);
+?>
+
+<div class="">
+
+    <div id="wrapper">
+        <div id="login" class=" form">
+            <section class="login_content">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+                <?php if ($messageError): ?>
+                    <div class="alert alert-danger" role="alert">
+                        E-mail ou senha incorretos.
+                        <a href="<?= $this->url('recover') ?>">Recuperar a senha!</a>
+                    </div>
+                <?php endif; ?>
+
+                <?php
+                $flash = $this->flashMessenger();
+                $flash->setMessageOpenFormat('<div%s>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <ul><li>')
+                    ->setMessageSeparatorString('</li><li>')
+                    ->setMessageCloseString('</li></ul></div>');
+
+                echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+                echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
+                echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
+                echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+
+                ?>
+
+
+
+
+
+
+                <form method="POST">
+                    <h1>Área Restrita</h1>
+
+                    <div>
+                        <?= $this->formElement($form->get('email')); ?>
+                    </div>
+                    <div>
+                        <?= $this->formElement($form->get('password')); ?>
+                    </div>
+                    <div class="checkbox">
+
+                    </div>
+                    <div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Logar</button>
+
+                        <a class="reset_pass pull-left" href="<?= $this->url('register') ?>">Registrar-se</a>
+                        <a class="reset_pass pull-right" href="<?= $this->url('recover') ?>">Recuperar Senha?</a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="separator">
+
+                       
+                        <?= $this->formElement($form->get('csrf')) ?>
+
+
+                        <div class="clearfix"></div>
+                        <br />
+                        <div>
+                            <h1><img src="<?php echo $this->basePath('media/').$this->DadosSite()->dados()->getFile(); ?>"></h1>
+
+                            <p>©<?php echo date('Y'); ?> Todos direitos reservados</p>
+                        </div>
+                    </div>
+                </form>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+    </div>
+</div>

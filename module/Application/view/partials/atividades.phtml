@@ -1,0 +1,124 @@
+
+<div class="modal-content">
+    
+    <div class="modal-body">
+
+        <div id="resAlt">
+
+
+        </div>
+        
+        <div class="x_panel">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Atividades</h4>
+
+            </div>
+
+
+
+            <div class="x_content">
+
+                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Listar</a>
+                        </li>
+
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+
+                            <!--listar tabela-->
+
+                            <table id=""  class="table table-striped table-bordered dt-responsive nowrap table" cellspacing="0" width="100%">
+
+
+                                <thead>
+                                <tr>
+                                    <th>Cod</th>
+                                    <th>Titulo</th>
+                                    <th>Tipo</th>
+                                    <th>Ativo</th>
+                                    <th>Ação</th>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+
+
+                                <?php
+
+                                $url = $_SERVER['REQUEST_URI'];
+
+                                $i = explode('/', $url);
+
+
+                                foreach($this->buscarAtividades as $res):
+
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $res->getCode(); ?></td>
+                                        <td><?php echo $res->getTitulo(); ?></td>
+                                        <td><?php echo $res->getTipo(); ?></td>
+                                        <td><?php echo $res->getAtivo(); ?></td>
+                                        <td>
+                                        <button class="btn btn-xs btn-primary anexar" 
+                                                
+                                                data-controller="Atividade"
+                                                data-aula="<?php echo  $i['4'];  ?>"
+                                                data-anexo = "<?php echo $res->getId(); ?>"
+                                                
+                                                 href="javascript:void(0);" ><i class="fa fa-share"></i> Anexar</button>
+                                               
+                                                   
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>Cod</th>
+                                    <th>Titulo</th>
+                                    <th>Tipo</th>
+                                    <th>Ativo</th>
+                                    <th>Ação</th>
+
+
+                                </tr>
+                                </tfoot>
+
+                            </table>
+
+
+
+
+
+
+
+                            <!--end listar tabela-->
+                        </div>
+                        
+
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+    </div>
+</div>

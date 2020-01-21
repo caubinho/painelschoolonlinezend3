@@ -1,0 +1,162 @@
+<?php
+$this->headTitle('Turma');
+
+?>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Turmas </h3>
+
+                <div class="clearfix"></div>
+                <p>
+                    <a class="btn btn-default" href="
+    <?= $this->url('admin/default', ['controller' => 'turma', 'action'=>'new']); ?>">
+                        <i class="fa fa-plus-circle"></i> Novo
+                    </a>
+
+                    <a class="btn btn-default" href="
+    <?= $this->url('admin/default', ['controller' => 'turma']); ?>">
+                        <i class="fa fa-navicon"></i> Listar
+                    </a>
+                </p>
+
+            </div>
+
+            <div class="title_right">
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+
+                    <p class="text-muted font-13 m-b-30">
+
+                        <?php
+                        $flash = $this->flashMessenger();
+                        $flash->setMessageOpenFormat('<div%s>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <ul><li>')
+                            ->setMessageSeparatorString('</li><li>')
+                            ->setMessageCloseString('</li></ul></div>');
+
+                        echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+                        echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
+                        echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
+                        echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+
+                        ?>
+
+                    </p>
+                    <div class="x_content">
+
+
+
+
+                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+
+                            <div id="loader" class="loader">   <p style="margin: 10px 0px 0px 15px;">Carregando...</p></div>
+
+                            <thead>
+                            <tr>
+
+                                <th>Turma</th>
+                                <th>Polo</th>
+                                <th>Coordenador</th>
+                                <th>Status</th>
+                                <th>Ação</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <?php
+
+                            $dados = $this->dados;
+                            $polo = $this->polo;
+
+
+
+                            if($dados != null) {
+
+                                /** @var \User\Entity\Turma $post */
+                                foreach ($dados as $post): ?>
+
+                                    <tr>
+
+                                        <td><?= $this->escapeHtml($post->getTitulo()); ?></td>
+                                        <td><?= $this->escapeHtml($post->getPolo()->getCidade()); ?></td>
+                                        <td><?= $this->escapeHtml($post->getCoordenador()); ?></td>
+                                        <td><?= $this->escapeHtml($post->getStatusAsString()); ?></td>
+
+                                        <td><a class="btn btn-xs btn-primary" title="Editar"
+                                               href="<?= $this->url('admin/default', ['controller' => 'turma',
+                                                   'action' => 'edit', 'id' => $post->getId()]); ?>"><i
+                                                        class="glyphicon glyphicon-edit"></i></a>
+
+                                            <a class="btn btn-xs btn-warning" title="Anexar Aula"
+                                               href="<?= $this->url('admin/cronograma', ['controller' => 'cronograma',
+                                                   'action' => 'list', 'id' => $post->getId()]); ?>"><i
+                                                        class="glyphicon glyphicon-share"></i></a>
+
+                                            <a class="btn btn-xs btn-success" title="Ver Alunos"
+                                               href="<?= $this->url('admin/default', ['controller' => 'turma',
+                                                   'action' => 'alunos', 'id' => $post->getId()]); ?>"><i
+                                                        class="glyphicon glyphicon-education"></i></a>
+
+
+                                            <?php
+
+                                            if($this->identity()->getRole() != 'Administrador'){}else{
+
+                                            ?>
+                                            <a class="btn btn-xs btn-danger deletar" title="Excluir"
+                                               href="<?= $this->url('admin/default', ['controller' => 'turma', 'action' => 'delete', 'id' => $post->getId()]); ?>"><span
+                                                        class="glyphicon glyphicon-floppy-remove"></span></a>
+
+                                        <?php } ?>
+
+                                        </td>
+                                    </tr>
+                                    <?php
+
+                                endforeach;
+                            }else{
+
+
+
+                            }
+                            ?>
+
+                            </tbody>
+
+                            <tfoot>
+                            <tr>
+
+                                <th>Turma</th>
+                                <th>Polo</th>
+                                <th>Coordenador</th>
+                                <th>Status</th>
+                                <th>Ação</th>
+
+                            </tr>
+                            </tfoot>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

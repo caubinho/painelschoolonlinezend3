@@ -1,0 +1,278 @@
+<?php echo $this->doctype();
+date_default_timezone_set('America/Sao_Paulo');
+?>
+<!---->
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <?php echo $this->headTitle('AVA - SPP')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <base href="http://<?php echo $_SERVER['HTTP_HOST']; ?>" />
+
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/css/custom.css'))
+
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/select2/dist/css/select2.min.css'))
+
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/ladda/dist/ladda-themeless.min.css'))
+
+        ->prependStylesheet($this->basePath('/theme/dashboard/css/video-js.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/js/sweetalert/dist/sweetalert.css'))
+
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css'))
+
+        ->prependStylesheet($this->basePath('/theme/dashboard/css/maps/jquery-jvectormap-2.0.3.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css'))
+
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/cropper/dist/cropper.min.css'))
+
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/select2/dist/css/select2.min.css'))
+
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/starrr/dist/starrr.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/switchery/dist/switchery.min.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/select2/dist/css/select2.min.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/google-code-prettify/bin/prettify.min.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/iCheck/skins/flat/green.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/pnotify/dist/pnotify.nonblock.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/pnotify/dist/pnotify.buttons.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/pnotify/dist/pnotify.css'))
+
+
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/font-awesome/css/font-awesome.min.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/bootstrap/dist/css/bootstrap.min.css')) ?>
+
+
+    <script src="/theme/dashboard/vendors/jquery/dist/jquery.min.js"></script>
+
+
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+
+
+
+
+                    <a href="<?php echo $this->url('admin/default', ['controller' => 'home']); ?>" class="site_title">
+
+                        <img class="image-responsive" src="<?php echo $this->basePath(); ?>/img/logo_spp_psc.png" width="40">
+                        <span>SPP</span>
+                    </a>
+
+
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile" style="margin-bottom: 20px;">
+                    <div class="profile_pic">
+
+                        <?php
+                        $img =  $this->identity()->getThumb();
+                        if(empty($img)) {
+
+
+                            ?>
+                            <img src="https://www.gravatar.com/avatar/<?php echo md5($this->identity()->getEmail()); ?>" alt="..." class="img-circle profile_img">
+                            <?php
+                        }else {
+                            ?>
+                            <img src="<?php echo $this->basePath('media/thumb/').$img; ?>" height="60" width="65" alt="..." class="img-circle profile_img">
+                            <?php
+                        }
+                        ?>
+
+                    </div>
+                    <div class="profile_info">
+                        <span>Bem vindo, <?= $this->identity(); ?></span>
+
+
+
+
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                </br>
+                <div style="width: 100%; margin-bottom: 30px;"></div>
+
+                <!-- sidebar menu -->
+                <?php echo $this->partial('sidebar'); ?>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <?php echo $this->partial('header'); ?>
+        <!-- /top navigation -->
+        
+
+
+        <!-- page content -->
+        <?php echo $this->content; ?>
+        <!-- /page content -->
+
+        <?php echo $this->partial('footer'); ?>
+    </div>
+</div>
+
+
+
+<!-- Scripts -->
+<?php echo $this->headScript()
+    ->prependFile($this->basePath() . '/theme/dashboard/js/crudAjax.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/custom.js')
+
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')
+
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/ladda/dist/ladda.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/ladda/dist/spin.min.js')
+
+    ->prependFile($this->basePath() . '/theme/dashboard/js/jquery-dateFormat/dist/dateFormat.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/jquery-dateFormat/dist/jquery-dateFormat.js')
+
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/sweetalert/dist/sweetalert.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/datepicker/daterangepicker.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/moment/moment.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/jquery.form.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/pdfmake/build/pdfmake.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/jszip/dist/jszip.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')
+
+
+
+
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-buttons/js/buttons.print.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-buttons/js/buttons.html5.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-buttons/js/buttons.flash.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/datatables.net/js/jquery.dataTables.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/pdfmake/build/vfs_fonts.js')
+
+    ->prependFile($this->basePath() . '/theme/dashboard/js/maps/gdp-data.js')
+
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/pnotify/dist/pnotify.nonblock.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/pnotify/dist/pnotify.buttons.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/pnotify/dist/pnotify.nonblock.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/pnotify/dist/pnotify.js')
+
+
+
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/cropper/dist/cropper.min.js')
+
+    ->prependFile($this->basePath() . '/theme/dashboard/js/flot/curvedLines.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/flot/jquery.flot.spline.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/flot/date.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/flot/jquery.flot.orderBars.js')
+
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/Flot/jquery.flot.resize.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/Flot/jquery.flot.stack.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/Flot/jquery.flot.time.js')
+
+
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/Flot/jquery.flot.pie.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/Flot/jquery.flot.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/skycons/skycons.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/iCheck/icheck.min.js')
+
+   ->prependFile($this->basePath() . '/theme/dashboard/vendors/switchery/dist/switchery.min.js')
+
+
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/jquery.tagsinput/src/jquery.tagsinput.js')
+
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/fastclick/lib/fastclick.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/ckeditor/adapters/jquery.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/js/ckeditor/ckeditor.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/nprogress/nprogress.js')
+    ->prependFile($this->basePath() . '/theme/dashboard/vendors/bootstrap/dist/js/bootstrap.min.js')
+
+
+; ?>
+
+
+<script>
+    Ladda.bind( '.progress-demo button[type=submit]', {
+        callback: function( instance ) {
+            var progress = 0;
+            var interval = setInterval( function() {
+                progress = Math.min( progress + Math.random() * 0.1, 1 );
+                instance.setProgress( progress );
+
+                if( progress === 1 ) {
+                    instance.stop();
+                    clearInterval( interval );
+                }
+            }, 200 );
+        }
+    } );
+
+</script>
+
+<script type="text/javascript">
+    (function () {
+        var FlashMessenger = function() {
+            var messageController = {
+                removeQueue: [],
+                warningCloseButtons: document.querySelectorAll('.alert-warning button[class="close"]'),
+                init: function() {
+                    this.warningCloseButtons.forEach(this.attachClickHandlerToCloseButtons.bind(this));
+                },
+                attachClickHandlerToCloseButtons: function(button, index, msg, args) {
+                    button.addEventListener('click', this.addToRemoveQueue.bind(this, index));
+                },
+                addToRemoveQueue: function(index, e) {
+                    this.removeQueue.push(index);
+                    document.cookie = 'warningRemoveQueue='+this.removeQueue.join(',')+';path=/'
+                }
+            };
+            messageController.init();
+        };
+        var fm = new FlashMessenger();
+    })();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+ <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+            <!--titulo-->
+            <div class="page-title">
+              <div class="title_left">
+                <h3>
+                  Módulos
+
+                </h3>
+              </div>
+
+            </div>
+
+<!--end titulo-->
+            <div class="clearfix"></div>
+
+            <div class="row">
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+
+
+                    <h2>Grade Curricular do Curso de Formação em Psicanalise</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li>
+                      </li>
+                      <li>
+                      </li>
+                      <li>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                      <?php
+
+                      $turma = $this->turma;
+
+                      /** @var \User\Entity\Alunos $t */
+                      foreach ($turma as $t) {
+
+
+                          ?>
+
+                          <table id=""
+                                 class="table display table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+                                 width="100%">
+                              <thead>
+                              <tr>
+
+                                  <th>Módulos da Turma: <?php echo $t->getTurma(); ?></th>
+
+                                  <th>Início</th>
+
+                                  <th>Ação</th>
+
+                              </tr>
+                              </thead>
+                              <tbody>
+
+                              <?php
+
+
+                              /** @var \User\Entity\Cronograma $modulos * */
+                              foreach ($this->modulo as $modulos) {
+
+                                  $idModulo = $modulos->getModulo();
+
+                                  if ($modulos->getTurma() === $t->getTurma() ) {
+
+
+
+
+                                      ?>
+
+                                      <tr>
+
+                                          <td><?php echo $modulos->getModulo()->getTitulo(); ?></td>
+
+                                          <td><?php echo $modulos->getInicio()->format('d/m/Y'); ?></td>
+
+                                          <td>
+                                              <a href="<?php echo $this->url('admin/modulo', ['action' => 'modulo'],
+                                                  [
+                                                      'force_canonical' => true,
+                                                  'query' => [
+                                                      'code' => $modulos->getModulo()->getCode() ,
+                                                      'turma' => $t->getTurma()->getCode()
+                                                  ]
+                                                  ]); ?>"
+                                                 class="btn btn-success btn-xs" title="Acessar"><i
+                                                          class="fa fa-caret-square-o-right"></i> Acessar</a>
+
+
+                                          </td>
+
+                                      </tr>
+
+                                      <?php
+
+
+                                  }
+
+                              }
+                              ?>
+
+
+                              </tbody>
+
+                          </table>
+
+
+                          <?php
+
+                      }
+
+                      ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->

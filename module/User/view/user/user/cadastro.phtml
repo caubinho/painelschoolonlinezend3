@@ -1,0 +1,242 @@
+<div class="folha-boleto">
+    <div class="row" style="margin-bottom: 20px">
+        <div class="a4">
+
+            <div class="noprint">
+                <a class="btn btn-default pull-right" href="#" onclick="window.history.back();" >
+                    <i class="fas fa-reply"></i> Voltar
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="a4" >
+        <div class="grid">
+            <div class="nome-lojista-envelope">
+                Ficha Cadastral
+            </div>
+            <?php
+            /** @var \User\Entity\User $post */
+            $res = $this->user;
+
+            foreach ($res as $p => $post){}
+            ?>
+            <div class="row partial-detalhamento">
+                <div class="detalhamento">
+                    <div class="row">
+                        <div class="col-100">
+                            <div class="demonstrativo">
+                                <div class="titulo-sessao">USUÁRIO</div>
+                                <table border="0">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="3">
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td width="70%" colspan="2">
+                                            <div class="dados-cliente">
+                                                <div><h2><?php echo $post->getFullName();?></h2></div>
+                                                <div><h3>CPF: <?php echo $post->getCpf();?></h3></div>
+                                                <div><h3>RG: <?php echo $post->getRg();?></h3></div>
+                                                <div><h3>E-mail: <?php echo $post->getEmail();?></h3></div>
+                                            </div>
+                                        </td>
+                                        <td  width="30%">
+                                            <?php
+                                            if($post->getFile() == null){
+                                                ?>
+                                                <img src="http://placehold.it/210x137" alt="..." class="margin img-responsive" />
+                                                <?php
+                                            }else{
+                                                ?>
+                                                <img width="200" src="http://<?php echo $_SERVER['HTTP_HOST']?><?php echo $this->basePath() . '/media/'.$post->getFile(); ?>" alt="..." class="margin img-responsive" />
+                                            <?php } ?>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <table border="0">
+                                    <thead>
+                                    <tr>
+                                        <td width="33%">ACESSO</td>
+                                        <td width="33%">CODIGO</td>
+                                        <td width="33%">STATUS</td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <span><?php echo $post->getRole(); ?></span>
+                                        </td>
+                                        <td>
+                                            <span><?php echo $post->getCodigo(); ?></span>
+                                        </td>
+                                        <td>
+                                            <span><?php echo $post->getStatusAsString();?></span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <br/>
+                                <div class="titulo-sessao">DADOS</div>
+                                <table border="0">
+                                    <thead>
+                                    <tr>
+                                        <td width="20%">NASCIMENTO</td>
+                                        <td width="20%">SEXO</td>
+                                        <td width="60%">NATURALIDADE</td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td ><?php echo $post->getNascimento();?></td>
+                                        <td><?php echo $post->getSexo();?></td>
+                                        <td><?php echo $post->getNaturalidade();?></td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <br/>
+
+                                <table border="0">
+                                    <thead>
+                                    <tr>
+                                        <td width="50%">PAI</td>
+
+                                        <td width="50%">MÃE</td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><?php echo $post->getPai();?></td>
+                                        <td><?php echo $post->getMae();?></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <br/>
+
+                                <table border="0">
+                                    <thead>
+                                    <tr>
+                                        <td width="40%" >TELEFONE</td>
+
+                                        <td width="40%">CELULAR</td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td valign="center"><?php echo $post->getTelefone();?></td>
+                                        <td><?php echo $post->getTelefone();?></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <br/>
+
+                                <div class="titulo-sessao">ENDEREÇO</div>
+
+                                <table border="0">
+                                    <thead>
+                                    <tr>
+                                        <td width="80%" >RUA</td>
+
+                                        <td width="20%">NUMERO</td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td valign="center"><?php echo $post->getRua();?></td>
+                                        <td><?php echo $post->getNumero();?></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <br/>
+
+                                <table border="0">
+                                    <thead>
+                                    <tr>
+                                        <td width="40%" >COMPLEMENTO</td>
+
+                                        <td width="40%">BAIRRO</td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td valign="center"><?php echo $post->getComplemento();?></td>
+                                        <td><?php echo $post->getBairro();?></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <br/>
+
+                                <table border="0">
+                                    <thead>
+                                    <tr>
+                                        <td width="50%" >CIDADE</td>
+
+                                        <td width="30%">ESTADOS</td>
+
+                                        <td width="20%">CEP</td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td valign="center"><?php echo $post->getCidade();?></td>
+                                        <td><?php echo $post->getEstado();?></td>
+                                        <td width="30%" ><?php echo $post->getCep();?></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <br/>
+                                <br/>
+                                <table border="0">
+
+                                    <tbody>
+                                    <tr>
+                                        <td height="30">
+
+                                            <a class="btn btn-default pull-right noprint" href="#" onclick="window.print()" >
+                                                <i class="fas fa-print"></i> Imprimir
+                                            </a>
+                                        </td>
+
+
+                                        <td>
+
+                                            <a class="btn btn-default pull-right noprint" href="<?= $this->url('admin/print', ['controller' => 'users', 'action'=>'cadastro', 'id' => $post->getId(), 'pdf'=> 'pdf']); ?>" >
+                                                <i class="fas fa-file-pdf"></i> Salvar em PDF
+                                            </a>
+                                        </td>
+
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <br/>
+                                <br/>
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

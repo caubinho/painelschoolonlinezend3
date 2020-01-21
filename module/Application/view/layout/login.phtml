@@ -1,0 +1,63 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle('AVA-SPP')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <base href="http://<?php echo $_SERVER['HTTP_HOST']; ?>" />
+
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <!-- Le styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/css/custom.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/font-awesome/css/font-awesome.min.css'))
+        ->prependStylesheet($this->basePath('/theme/dashboard/vendors/bootstrap/dist/css/bootstrap.min.css')) ?>
+
+
+
+    <!-- Scripts -->
+    <?php
+
+    echo $this->headScript()->prependFile($this->basePath() . '/js/bootstrap.min.js')
+        ->prependFile($this->basePath() . '/theme/dashboard/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')
+        ->prependFile($this->basePath() . '/theme/dashboard/vendors/jquery/dist/jquery.min.js'); ?>
+
+
+    <script>
+
+        $(document).ready(function () {
+            $("#cpf").inputmask("999.999.999-99");
+
+            $("#nascimento").inputmask("99/99/9999");
+
+            $("#fone").inputmask({
+                mask: ["(99) 9999-9999", "(99) 99999-9999", ],
+                keepStatic: true
+            });
+        })
+
+    </script>
+
+
+
+</head>
+
+<body style="background:#F7F7F7; padding: 0px 15px">
+
+<div class="">
+
+
+    <div id="wrapper">
+<?php echo $this->content; ?>
+
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<?php
+$this->headTitle('Alterar Módulo');
+
+
+
+$titulo = $form->get('titulo')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Digite um Título'
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$form->get('status')->setAttributes([
+    'class'=>'form-control'
+]);
+
+
+$texto = $form->get('texto')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Digite um e-mail válido'
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary', 'value' => 'Salvar']);
+
+$form->prepare();
+?>
+
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Módulo</h3>
+
+                <div class="clearfix"></div>
+                <p>
+                    <a class="btn btn-default" href="
+    <?= $this->url('admin/default', ['controller' => 'modulos', 'action'=>'new']); ?>">
+                        <i class="fa fa-plus-circle"></i> Novo
+                    </a>
+
+                    <a class="btn btn-default" href="
+    <?= $this->url('admin/default', ['controller' => 'modulos']); ?>">
+                        <i class="fa fa-navicon"></i> Listar
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Editar</h2>
+
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <?php
+                        $flash = $this->flashMessenger();
+                        $flash->setMessageOpenFormat('<div%s>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <ul><li>')
+                            ->setMessageSeparatorString('</li><li>')
+                            ->setMessageCloseString('</li></ul></div>');
+
+                        echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+                        echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
+                        echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
+                        echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+
+                        ?>
+
+                        <br />
+
+
+                        <?php
+                        $form->setAttribute('action',$this->url('admin/default',array('controller'=>'modulos','action'=>'edit', 'id' => $dataBase->getId() )));
+                        $form->prepare();
+                        ?>
+                        <?= $this->form()->openTag($form); ?>
+
+                        <?= $this->formHidden($form->get('id'));?>
+
+
+                        <?php $message = $this->formElementErrors($titulo, ['class' => 'help-block']); ?>
+
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Titulo <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                <?= $this->formElement($titulo); ?>
+                                <?= $message ?>
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12">Status</label>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <?= $this->formElement($form->get('status')); ?>
+                                <?= $this->formElementErrors($form->get('status')); ?>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+           
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Texto</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <?= $this->formElement($form->get('texto')); ?>
+                        <?= $this->formElementErrors($form->get('texto')); ?>
+                        <br />
+
+                        <div class="ln_solid"></div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <a href="<?php echo $this->url('admin/default', ['controller' => 'modulos']) ?>"  class="btn btn-danger"><span class="glyphicon glyphicon-remove-sign"></span> Cancelar</a>
+
+                                <?= $this->formElement($form->get('submit')); ?>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php  echo $this->form()->closeTag(); ?>
+
+    </div>
+
+    <!--img destaque-->
+
+    <!--end img destaque-->
+
+
+
+
+</div>
+</div>
+<!-- /page content -->
+
+<!-- Modal -->
+
+<!--end modal-->
+
+

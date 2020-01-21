@@ -1,0 +1,20 @@
+.dados-cliente{display:inline-block;padding-left:8px;max-height:55px;max-width:450px;padding-bottom:5px;padding-right:5px}
+.dados-cliente div:not(.titulo-sessao){font-size:12pt}
+.observacao .titulo-sessao,.demonstrativo .titulo-sessao{padding-left:8px;padding-bottom:5px}
+.titulo-sessao{font-size:7pt;color:#000;font-weight:bold;width:100%;display:inline-block}
+.caixa{border:2px solid;height:100%;width:100%;border-radius:5px;box-sizing:border-box;color:#ccc;display:table;padding-top:10px;padding-bottom:10px}
+.caixa .caixa-informacoes{display:table-cell;vertical-align:middle;margin:0 auto;text-align:center}
+.caixa span:last-child{font-size:11pt}
+.observacao div:last-child{background-color:#e6e6e6;font-size:9pt;border-radius:3px;padding-left:10px;max-height:34px;padding-bottom:6px;vertical-align:middle;padding-top:6px}
+.demonstrativo{padding-top:5px;height:63.5mm}
+.demonstrativo table{width:100%;border-collapse:collapse}
+.demonstrativo table thead{font-weight:bold;background-color:#e6e6e6;text-align:center;line-height:13px}
+.demonstrativo table thead tr td{font-size: 7pt; border-right:2px solid;border-color:white; background-color: #ccc; padding:3px 0px}
+.demonstrativo table thead tr td:last-child{border-right:none}
+.demonstrativo table tbody{text-align:center;line-height:21px}
+.demonstrativo table tbody tr td{font-size:9pt; padding:8px 0px; border-bottom:1px solid;border-color:#e6e6e6; max-width:290px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; text-align: center}
+.demonstrativo table tbody tr td:first-child{text-align:center;padding-left:15px}
+.demonstrativo div:last-child{font-size:7pt;padding-left:16px;font-weight:bold;padding-top:5px}
+.detalhamento .informacoes-cobranca .info-cobranca{margin-top:8px}
+.detalhamento .campo-observacao{margin-bottom:18px}
+/*# sourceMappingURL=detalhamento.css.map */

@@ -1,0 +1,326 @@
+<?php
+$this->headTitle('Alterar Turma');
+
+$form = $this->form;
+
+$titulo = $form->get('titulo')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Digite um Título'
+])->setLabelAttributes(['class' => 'control-label']);
+
+$coordenador = $form->get('coordenador')->setAttributes([
+    'class'=>'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$polo = $form->get('polo')->setAttributes([
+    'class'=>'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$telefone = $form->get('telefone')->setAttributes([
+    'class'=>'form-control',
+    'id'    => 'fone',
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+
+$form->get('status')->setAttributes([
+    'class'=>'form-control'
+]);
+
+$endereco = $form->get('endereco')->setAttributes([
+    'class'=>'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$inicio = $form->get('inicio')->setAttributes([
+    'class'=>'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$termino = $form->get('termino')->setAttributes([
+    'class'=>'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$img = $form->get('file')->setAttributes([
+    'class'=>'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$texto = $form->get('texto')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Digite um e-mail válido'
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary', 'value' => 'Salvar']);
+
+$form->prepare();
+?>
+
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Turma</h3>
+
+                <div class="clearfix"></div>
+                <p>
+                    <a class="btn btn-default" href="
+    <?= $this->url('admin/default', ['controller' => 'turma', 'action'=>'new']); ?>">
+                        <i class="fa fa-plus-circle"></i> Novo
+                    </a>
+
+                    <a class="btn btn-default" href="
+    <?= $this->url('admin/default', ['controller' => 'turma']); ?>">
+                        <i class="fa fa-navicon"></i> Listar
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Editar</h2>
+
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <?php
+                        $flash = $this->flashMessenger();
+                        $flash->setMessageOpenFormat('<div%s>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <ul><li>')
+                            ->setMessageSeparatorString('</li><li>')
+                            ->setMessageCloseString('</li></ul></div>');
+
+                        echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+                        echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
+                        echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
+                        echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+
+                        ?>
+
+                        <br />
+
+
+                        <?php
+                        $form->setAttribute('action',$this->url('admin/default',array('controller'=>'turma','action'=>'edit', 'id' => $dataBase->getId() )));
+
+
+                        $form->prepare();
+                        ?>
+                        <?= $this->form()->openTag($form); ?>
+
+                        <?= $this->formHidden($form->get('id'));?>
+
+                        <?php $message = $this->formElementErrors($titulo, ['class' => 'help-block']); ?>
+
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Turma <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                <?= $this->formElement($titulo); ?>
+                                <?= $message ?>
+
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($polo, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Polo
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($polo); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+
+                        <?php $message = $this->formElementErrors($coordenador, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Coordenador
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($coordenador); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($telefone, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Telefone
+                            </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <?= $this->formElement($telefone); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($endereco, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Endereço
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($endereco); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+
+
+                        <?php $message = $this->formElementErrors($inicio, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Início
+                            </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <?= $this->formElement($inicio); ?>
+                                <?= $message ?>
+                            </div>
+
+                            <label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Término
+                            </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <?= $this->formElement($termino); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+
+
+                        <?php $message = $this->formElementErrors($img, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Imagem
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($img); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12">Status</label>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <?= $this->formElement($form->get('status')); ?>
+                                <?= $this->formElementErrors($form->get('status')); ?>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Imagem</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        <div class="box-body">
+
+
+
+                            <div id="resultImagem">
+
+                                <?php
+
+
+                                if($dataBase->getFile() == null){
+                                    ?>
+                                    <img width="100%" height="137" src="http://placehold.it/210x137" alt="..." class="margin" />
+                                    <?php
+                                }else{
+                                    ?>
+                                    <img src="<?php echo $this->basePath() . '/media/'.$dataBase->getFile(); ?>" alt="..." class="margin img-responsive" />
+
+
+                                    <button type="button" style="margin-top: 5px" class="btn btn-danger btn-block btn-flat apagarImg " controller="turma" id="<?php echo $dataBase->getId(); ?>"  >
+                                        <i class="fa fa-times-circle-o"></i> Apagar
+                                    </button>
+                                <?php } ?>
+
+                            </div>
+
+
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Texto</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <?= $this->formElement($form->get('texto')); ?>
+                        <?= $this->formElementErrors($form->get('texto')); ?>
+                        <br />
+
+                        <div class="ln_solid"></div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <a href="<?php echo $this->url('admin/default', ['controller' => 'turma']) ?>"  class="btn btn-danger"><span class="glyphicon glyphicon-remove-sign"></span> Cancelar</a>
+
+                                <?= $this->formElement($form->get('submit')); ?>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        <?php  echo $this->form()->closeTag(); ?>
+
+
+        </div>
+    </div>
+
+    <!--img destaque-->
+
+    <!--end img destaque-->
+
+
+
+
+</div>
+</div>
+<!-- /page content -->
+
+
+
+
+
+
+
+
+

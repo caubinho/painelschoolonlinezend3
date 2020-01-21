@@ -1,0 +1,150 @@
+<?php
+
+$alunos = $this->alunos;
+$turma = $this->turma;
+
+/**
+ * @var  \User\Entity\Turma $resTurma
+ */
+foreach ($turma as $t => $resTurma){}
+
+?>
+<!-- page content -->
+<div class="right_col" role="main">
+
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3> Alunos</h3>
+                <div class="clearfix"></div>
+                <h2>Polo: <?php echo $resTurma->getPolo()->getCidade(); ?> / Turma: <?php echo $resTurma->getTitulo(); ?><h2>
+            </div>
+        </div>
+
+
+        <div class="title_right" style="width:100%;">
+            <h3></h3>
+
+            <div class="clearfix"></div>
+            <p>
+
+                <a class="btn btn-primary pull-right" href="javascript:history.back()">
+                    <i class="fa fa-reply"></i> Voltar
+                </a>
+            </p>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_content">
+
+                        <div class="row">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
+<!--                                <ul class="pagination pagination-split">-->
+<!--                                    <li><a href="#">A</a>-->
+<!--                                    </li>-->
+<!--                                    <li><a href="#">B</a>-->
+<!--                                    </li>-->
+<!--                                    <li><a href="#">C</a>-->
+<!--                                    </li>-->
+<!--                                    <li><a href="#">D</a>-->
+<!--                                    </li>-->
+<!--                                    <li><a href="#">E</a>-->
+<!--                                    </li>-->
+<!--                                    <li>...</li>-->
+<!--                                    <li><a href="#">W</a>-->
+<!--                                    </li>-->
+<!--                                    <li><a href="#">X</a>-->
+<!--                                    </li>-->
+<!--                                    <li><a href="#">Y</a>-->
+<!--                                    </li>-->
+<!--                                    <li><a href="#">Z</a>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+                            </div>
+                            <div class="clearfix"></div>
+
+<?php
+
+/** @var \User\Entity\User $resAluno */
+foreach ($alunos as $resAluno) {
+
+    $imagem = $resAluno->getFile();
+
+    ?>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="well profile_view" >
+            <div class="col-sm-12" style="min-height: 180px;">
+                <h4 class="brief"><i></i></h4>
+                <div class="left col-xs-7">
+                    <h2><?php echo $resAluno->getFullName(); ?></h2>
+                    <p><strong>E-mail: </strong> <?php echo $resAluno->getEmail(); ?> </p>
+                    <p><strong>Cel: </strong> <?php echo $resAluno->getCelular(); ?> </p>
+                    <p><strong>Tel: </strong> <?php echo $resAluno->getTelefone(); ?> </p>
+
+                </div>
+                <div class="right col-xs-5 text-center">
+
+                    <?php
+
+                    if(empty($imagem)) {
+                        ?>
+
+                        <img  src="https://www.gravatar.com/avatar/<?php echo md5($resAluno->getEmail()); ?>" alt="" class="img-circle img-responsive">
+
+                        <?php
+
+                    }else{
+                        ?>
+                        <img  src="<?php echo $this->basePath('/media/').$resAluno->getFile(); ?>" alt="" class="img-circle img-responsive">
+                        <?php
+                    }
+
+                    ?>
+                </div>
+            </div>
+            <div class="col-xs-12 bottom text-center">
+
+                <div class="col-xs-4 col-sm-4">
+
+                        <a href="<?= $this->url('admin/trabalho',
+                            ['action' => 'list', 'sub' => 'aluno', 'id' =>$resAluno->getId()]); ?>" class="btn btn-app">
+                            <i class="fa fa-edit"></i> Trabalhos
+                        </a>
+                            </div>
+
+                <div class="col-xs-4 col-sm-4">
+
+                <a href="<?= $this->url('admin/default',
+                    ['controller' => 'boleto', 'action' => 'view', 'id'=>$resAluno->getId()]); ?>" class="btn btn-app">
+                    <i class="fa fa-usd"></i> Financeiro
+                </a>
+                </div>
+
+                    <div class="col-xs-4 col-sm-4">
+
+                        <a href="<?= $this->url('admin/default',
+                            ['controller' => 'users','action'=>'edit', 'id'=>$resAluno->getId()]); ?>" class="btn btn-app">
+                            <i class="fa fa-user"></i> Perfil
+                        </a>
+                            </div>
+
+            </div>
+        </div>
+    </div>
+    <?php
+}
+?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->

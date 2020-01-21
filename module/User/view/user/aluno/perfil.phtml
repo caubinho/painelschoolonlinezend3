@@ -1,0 +1,601 @@
+<?php
+$this->headTitle('Editar Perfil');
+
+$post = $this->user;
+
+$form->get('role')->setAttributes([
+    'class'=>'form-control',
+]);
+
+$email = $form->get('email')->setAttributes([
+    'class'         =>'form-control',
+    'placeholder'   =>'Digite um email válido',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$fullName = $form->get('full_name')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Nome completo',
+
+])->setLabelAttributes(['class' => 'control-label']);
+
+$codigo = $form->get('codigo')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Codigo SPP',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$nascimento = $form->get('nascimento')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Nascimento',
+    'id'            => 'nascimento',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$cpf = $form->get('cpf')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'   => '999.999.999-99',
+    'id'            => 'cpf',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$rg = $form->get('rg')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Digite seu RG',
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$pai = $form->get('pai')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Nome completo',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$mae = $form->get('mae')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Nome completo',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$telefone = $form->get('telefone')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => '(99) 9999-9999',
+    'id'            => 'telefone'
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$sexo = $form->get('sexo')->setAttributes([
+    'class'=>'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$celular = $form->get('celular')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => '(99) 99999-9999',
+    'id'            => 'fone',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$naturalidade = $form->get('naturalidade')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Naturalidade',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$rua = $form->get('rua')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Rua',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$numero = $form->get('numero')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Numero',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$complemento = $form->get('complemento')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Apto, Bloco...',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$bairro = $form->get('bairro')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Bairro',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$cidade = $form->get('cidade')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Cidade',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$estado = $form->get('estado')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'Estado',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$cep = $form->get('cep')->setAttributes([
+    'class'         => 'form-control',
+    'placeholder'   => 'cep',
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$turma = $form->get('turma')->setAttributes([
+    'class'         => 'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$form->get('status')->setAttributes([
+    'class'=>'form-control'
+]);
+
+
+$img = $form->get('file')->setAttributes([
+    'class'=>'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$form->get('submit')
+        ->setAttributes(['class'=>'btn btn-primary'])
+        ->setValue('Salvar');
+
+$form->prepare();
+?>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="page-title">
+            <div class="title_left" style="width:100%;">
+                <h3>Perfil</h3>
+
+                <div class="row">
+                    <div class="col-sm-10">
+
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-1 ">
+                        <a class="btn btn-default pull-right" href="<?= $this->url('admin/print', ['controller' => 'users', 'action'=>'cadastro', 'id' => $post->getId()]); ?>" >
+                            <i class="fa fa-print"></i> Imprimir
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-1">
+
+                        <a class="btn btn-primary pull-right" href="javascript:history.back()">
+                            <i class="fa fa-reply"></i> Voltar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Editar</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <?php
+                        $flash = $this->flashMessenger();
+                        $flash->setMessageOpenFormat('<div%s>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <ul><li>')
+                            ->setMessageSeparatorString('</li><li>')
+                            ->setMessageCloseString('</li></ul></div>');
+
+                        echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+                        echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
+                        echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
+                        echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+
+                        ?>
+
+
+
+
+                        <br />
+                        <?= $this->form()->openTag($form); ?>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12">Status</label>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+
+                                <h3><?php echo $user->getStatusAsString(); ?></h3>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <?php $message = $this->formElementErrors($turma, ['class' => 'help-block']); ?>
+                            <div class="form-group<?= $message ? " has-error" : "" ?>">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Turma
+                                </label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" class="form-control" readonly value="<?php echo $post->getTurma(); ?>">
+                                </div>
+
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Polo
+                                </label>
+
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" class="form-control" readonly value="<?php echo $post->getTurma()->getPolo(); ?>">
+                                </div>
+
+
+                            </div>
+
+
+
+
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Acesso:
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+
+                                <h3><?php echo $user->getRole(); ?></h3>
+
+                            </div>
+
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Código SPP:
+                            </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                                <h3><?php echo $user->getCodigo(); ?></h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="ln_solid"></div>
+
+
+
+
+                        <?php $message = $this->formElementErrors($fullName, ['class' => 'help-block']); ?>
+
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nome <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                <?= $this->formElement($fullName); ?>
+                                <?= $message ?>
+
+                            </div>
+                        </div>
+
+
+
+                        <?php $message = $this->formElementErrors($email, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">E-mail <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($email); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($nascimento, ['class' => 'help-block']); ?>
+                        
+
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nascimento
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+
+                               
+                                <?= $this->formRow($nascimento); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($sexo, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Sexo
+                            </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <?= $this->formElement($sexo); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+
+
+
+                        <?php $message = $this->formElementErrors($pai, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Pai
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($pai); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($mae, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Mãe
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($mae); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($cpf, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">CPF
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <?= $this->formElement($cpf); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($rg, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">RG
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <?= $this->formElement($rg); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+
+
+                        <?php $message = $this->formElementErrors($naturalidade, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Naturalidade
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($naturalidade); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($img, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>" style="padding-bottom: 10px;">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Imagem
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($img); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="ln_solid"></div>
+
+                        <?php $message = $this->formElementErrors($telefone, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Telefone
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <?= $this->formElement($telefone); ?>
+                                <?= $message ?>
+                            </div>
+
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Celular
+                            </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <?= $this->formElement($celular); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+
+
+                        <?php $message = $this->formElementErrors($rua, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Rua
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($rua); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+                        <?php $message = $this->formElementErrors($numero, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Numero
+                            </label>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <?= $this->formElement($numero); ?>
+                                <?= $message ?>
+                            </div>
+
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Complemento
+                            </label>
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <?= $this->formElement($complemento); ?>
+                                <?= $message ?>
+                            </div>
+
+                        </div>
+
+                        <?php $message = $this->formElementErrors($bairro, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Bairro
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <?= $this->formElement($bairro); ?>
+                                <?= $message ?>
+                            </div>
+
+                            <label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Cidade
+                            </label>
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <?= $this->formElement($cidade); ?>
+                                <?= $message ?>
+                            </div>
+
+                        </div>
+
+                        <?php $message = $this->formElementErrors($estado, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Estado
+                            </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <?= $this->formElement($estado); ?>
+                                <?= $message ?>
+                            </div>
+
+                            <label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Cep
+                            </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <?= $this->formElement($cep); ?>
+                                <?= $message ?>
+                            </div>
+
+                        </div>
+
+                        <div class="ln_solid"></div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Imagem</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        <div class="box-body">
+
+
+
+                            <div id="resultImagem">
+
+                                <?php
+
+                                $file = $user->getFile();
+
+                                if(empty($file)){
+                                    ?>
+                                    <img width="210" height="137" src="http://placehold.it/210x137" alt="..." class="margin img-responsive" />
+                                    <?php
+                                }else{
+                                    ?>
+                                    <p><a href="<?php echo $this->url('admin/imagem', ['action' => 'edit'],
+                                            [
+                                                'force_canonical' => true,
+                                                'query' => [
+                                                    'aluno' => $user->getId(),
+                                                ]
+                                            ]); ?>" >Editar Imagem</a></p></p>
+                                    <img width="100%" src="<?php echo $this->basePath() . '/media/thumb/'.$user->getThumb(); ?>" alt="..." class="margin img-responsive" />
+
+                                    <button type="button" style="margin-top: 5px" class="btn btn-danger btn-block btn-flat apagarImg" controller="users"  status="false" action="imagem"  id="<?php echo $user->getId(); ?>"  >
+                                        <i class="fa fa-times-circle-o"></i> Apagar
+                                    </button>
+                                <?php } ?>
+
+                            </div>
+
+                            
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+
+                <!--Password-->
+
+                <div class="x_panel">
+                    <div class="x_content">
+
+                        <div class="box-body">
+                            <a class="btn btn-default" style="width: 100%" href="<?= $this->url('admin/default',
+                                ['controller' => 'alunos', 'action'=>'change-password', 'id'=>$user->getId()]); ?>">
+                                <span class="glyphicon glyphicon-lock"></span> Senha
+                            </a>
+
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+
+                <!--end password-->
+
+                <div class="x_panel">
+                    <div class="x_content">
+
+                        <div class="box-body">
+
+
+                                <a href="<?= $this->url('admin/trabalho',
+                                    ['action' => 'list', 'sub' => 'aluno', 'id'=>$user->getId()]); ?>" class="btn btn-app">
+                                    <i class="fa fa-edit"></i> Trabalhos
+                                </a>
+
+
+                            <a href="<?= $this->url('admin/default',
+                                ['controller' => 'boleto', 'action' => 'view', 'id'=>$user->getId()]); ?>" class="btn btn-app">
+                                <i class="fa fa-usd"></i> Financeiro
+                            </a>
+
+
+
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+
+                    <div class="x_content">
+
+
+                        <br />
+
+                        <div class="ln_solid"></div>
+
+                        <div class="form-group">
+
+
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+
+
+                                <a href="<?php echo $this->url('admin/default', ['controller' =>'home']) ?>"  class="btn btn-danger"><span class="glyphicon glyphicon-remove-sign"></span> Cancelar</a>
+
+                            </div>
+
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+
+                                <?= $this->formElement($form->get('submit')); ?>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <?= $this->form()->closeTag(); ?>
+
+        </div>
+
+        <!--img destaque-->
+
+        <!--end img destaque-->
+
+
+
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,243 @@
+<?php
+
+$alunos = $this->alunos;
+$turma = $this->turma;
+
+/**
+ * @var  \User\Entity\Turma $resTurma
+ */
+foreach ($turma as $t => $resTurma){}
+
+?>
+<!-- page content -->
+<div class="right_col" role="main">
+
+    <div class="">
+        <div class="page-title">
+            <div class="title_left" style="width:100%;">
+                <h3> Alunos</h3>
+                <div class="clearfix"></div>
+                <h2>Polo: <?php echo $resTurma->getPolo()->getCidade(); ?> / Turma: <?php echo $resTurma->getTitulo(); ?> - Total de Alunos: <?php echo $this->qtdalunosturma; ?>
+                    <br>
+                    <h2>Coordenador(a): <?php echo $resTurma->getCoordenador(); ?></h2>
+                    <br>
+
+                        <div class="clearfix"></div>
+                        <p>
+
+                            <?php
+
+                            if($this->identity()->getRole() != 'Administrador'){}else {
+
+                                ?>
+
+                                <a class="btn btn-primary" href="javascript:void(0);" onclick="openModalUsers()">
+                                    <i class="fa fa-plus-circle"></i> Inserir Aluno
+                                </a>
+
+                                <?php
+                            }
+                            ?>
+
+
+                            <a class="btn btn-primary pull-right" href="javascript:history.back()">
+                                <i class="fa fa-reply"></i> Voltar
+                            </a>
+                        </p>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_content">
+
+                        <?php
+
+                        $flash = $this->flashMessenger();
+                        $flash->setMessageOpenFormat('<div%s>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <ul><li>')
+                            ->setMessageSeparatorString('</li><li>')
+                            ->setMessageCloseString('</li></ul></div>');
+
+                        echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+                        echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
+                        echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
+                        echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+
+                        ?>
+
+                        <div class="row">
+
+                            <div class="clearfix"></div>
+
+<?php
+
+/** @var \User\Entity\Alunos $resAluno */
+foreach ($alunos as $resAluno) {
+
+    $imagem = $resAluno->getUsuario()->getFile();
+
+    $aluno = $resAluno->getUsuario()->getId();
+
+    if(empty($aluno)){}else {
+
+        ?>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="well profile_view">
+                <div class="col-sm-12" style="min-height: 180px;">
+                    <h4 class="brief"><i></i></h4>
+                    <div class="left col-xs-7">
+                        <h2><?php echo $this->LimitaCaracter($resAluno->getUsuario()->getFullName(), 20); ?></h2>
+                        <p><strong>E-mail: </strong> <?php echo $resAluno->getUsuario()->getEmail(); ?> </p>
+                        <p><strong>Cel: </strong> <?php echo $resAluno->getUsuario()->getCelular(); ?> </p>
+                        <p><strong>Tel: </strong> <?php echo $resAluno->getUsuario()->getTelefone(); ?> </p>
+
+                    </div>
+                    <div class="right col-xs-5 text-center">
+
+                        <?php
+
+                        if (empty($imagem)) {
+                            ?>
+
+                            <img src="https://www.gravatar.com/avatar/<?php echo md5($resAluno->getUsuario()->getEmail()); ?>"
+                                 alt="" class="img-circle img-responsive">
+
+                            <?php
+
+                        } else {
+                            ?>
+                            <img src="<?php echo $this->basePath('/media/thumb/') . $resAluno->getUsuario()->getThumb(); ?>"
+                                 alt="" class="img-circle img-responsive">
+                            <?php
+                        }
+
+                        ?>
+                    </div>
+                </div>
+                <div class="col-xs-12 bottom text-center">
+
+                    <a title="Editar" class="btn btn-default" href="<?= $this->url('admin/default',
+                        ['controller' => 'users', 'action' => 'edit', 'id' => $resAluno->getUsuario()->getId()]); ?>"><i
+                                class="glyphicon glyphicon-user"></i></a>
+
+                    <a title="Trabalho" class="btn btn-default" href="<?= $this->url('admin/trabalho',
+                        ['action' => 'list'], [ 'query' => [ 'aluno' => $resAluno->getUsuario()->getId()]]); ?>">
+                        <i class="glyphicon glyphicon-duplicate"></i>
+                    </a>
+
+
+                    <a title="Financeiro" class="btn btn-default" href="<?= $this->url('admin/default',
+                        ['controller' => 'boleto', 'action' => 'view', 'id' => $resAluno->getUsuario()->getId()]); ?>"><i
+                                class="glyphicon glyphicon-usd"></i></a>
+
+                    <?php
+
+                    if ($this->identity()->getRole() != 'Administrador') {
+
+                    } else {
+
+                        ?>
+
+                        <a title="Excluir" class="btn btn-danger deletar" href="<?= $this->url('admin/turma',
+                            ['controller' => 'alunos', 'turma' => $resTurma->getId(), 'action' => 'delete', 'id' => $resAluno->getId()]); ?>"><span
+                                    class="glyphicon glyphicon-floppy-remove"></span></a>
+
+                        <?php
+                    }
+
+                    ?>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+}
+?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+
+
+<!--link-->
+<div class="modal fade users" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Alunos</h4>
+            </div>
+            <div class="modal-body">
+                <!--conteudo video-->
+
+                <!--listar material-->
+
+                <table id="datatable-link" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Cod</th>
+                        <th>Titulo</th>
+                        <th>Ação</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php
+                    $listAlunos = $this->listarAlunos;
+
+                    /** @var \User\Entity\User $alunos */
+                    foreach ($listAlunos as $alunos){
+
+                        ?>
+                        <tr>
+                            <td><?= $alunos->getId(); ?></td>
+                            <td><?= $alunos->getFullName(); ?></td>
+                            <td>
+
+                                <a class="btn btn-xs btn-primary" href="<?php echo $this->url('admin/default', ['controller' => 'users', 'action' => 'perfil', 'id' => $alunos->getId()]);?>"><i class="glyphicon glyphicon-edit"></i></a>
+
+                                <a class="btn btn-xs btn-primary anexarAluno" data-usuario="<?php echo  $alunos->getId();  ?>" data-turma="<?php echo $resTurma->getId(); ?>" href="javascript:void(0);" ><i class="fa fa-share"></i> Inserir</a>
+
+                            </td>
+
+                        </tr>
+
+                    <?php } ?>
+
+                    </tbody>
+                </table>
+                <!--end listar-->
+
+                <!--end conteudo-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--end link-->
+
+
+
+<script>
+    function openModalUsers(){
+        $('.users').modal();
+    }
+</script>

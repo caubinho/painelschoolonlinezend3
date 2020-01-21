@@ -1,0 +1,406 @@
+<?php
+$this->headTitle('Imprimir Usuário');
+
+$user = $this->user;
+?>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Usuário</h3>
+            </div>
+
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-p-6">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Editar</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+
+
+
+
+                        <br />
+                        <form method="post" name="user-form" enctype="multipart&#x2F;form-data" class="form-horizontal&#x20;form-label-left" id="user-form">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-p-2" for="first-name">Polo
+                                    </label>
+                                    <div class="col-md-4 col-sm-4 col-p-6">
+                                        <select name="polo" class="form-control"><option value="1" selected="selected">Polo SPP</option>
+                                            <option value="2">01 - Cornélio Procópio - Centro</option>
+                                            <option value="3">02 - Londrina - Centro</option>
+                                            <option value="4">02 - Cascavel II</option>
+                                            <option value="5">03 - Cascavel IV</option>
+                                            <option value="6">01 - Bela Vista do Paraíso</option>
+                                            <option value="7">Polo Ibiporã</option>
+                                            <option value="8">01Ibiporã- </option>
+                                            <option value="9">Polo Rolândia</option>
+                                            <option value="10">Polo Ponta Grossa</option>
+                                            <option value="11">Polo Santo Antônio da Platina</option>
+                                            <option value="12">Polo Curitiba</option>
+                                            <option value="13">Polo Curitiba *</option>
+                                            <option value="14">Polo Maringá</option></select>                                                                    </div>
+
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Turma
+                                    </label>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <select name="turma" class="form-control"><option value="1" selected="selected">Turma SPP</option>
+                                            <option value="2">Turma 01</option>
+                                            <option value="3">Turma 02 e 03</option>
+                                            <option value="4">Turma 04</option>
+                                            <option value="5">Turma 02</option>
+                                            <option value="6">Turma 03</option>
+                                            <option value="7">turma 05</option>
+                                            <option value="8">Pós F S B</option></select>
+                                    </div>
+
+                                </div>
+
+
+
+
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Acesso <span class="required">*</span>
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+
+                                    <select name="role" class="form-control"><option value="1">Visitante</option>
+                                        <option value="2">Aluno</option>
+                                        <option value="3">Professor</option>
+                                        <option value="4" selected="selected">Administrador</option>
+                                        <option value="6">Coordenador</option></select>
+                                </div>
+
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Código
+                                </label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+
+                                    <input type="text" name="codigo" class="form-control" placeholder="Codigo&#x20;SPP" value="87055645">
+                                </div>
+
+                            </div>
+
+
+                            <div class="ln_solid"></div>
+
+
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nome <span class="required">*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                    <input type="text" name="full_name" class="form-control" placeholder="Nome&#x20;completo" value="Webmaster&#x20;&#x28;Caubinho&#x29;">
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">E-mail <span class="required">*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" name="email" class="form-control" placeholder="Digite&#x20;um&#x20;email&#x20;v&#xE1;lido" value="caubinho&#x40;gmail.com">                                                            </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nascimento
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+
+
+                                    <input type="text" name="nascimento" class="form-control" placeholder="Nascimento" id="nascimento" value="18&#x2F;01&#x2F;1977">                                                            </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Sexo
+                                </label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <select name="sexo" class="form-control"><option value="Masculino" selected="selected">Masculino</option>
+                                        <option value="Feminino">Feminino</option></select>                                                            </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Pai
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" name="pai" class="form-control" placeholder="Nome&#x20;completo" value="Abel&#x20;Pacheco">                                                            </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Mãe
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" name="mae" class="form-control" placeholder="Nome&#x20;completo" value="Aparecida&#x20;Francisca&#x20;Pacheco">                                                            </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">CPF
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="cpf" class="form-control" placeholder="999.999.999-99" id="cpf" value="953.872.699-53">                                                            </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">RG
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="rg" class="form-control" placeholder="Digite&#x20;seu&#x20;RG" value="64700987">                                                            </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Naturalidade
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" name="naturalidade" class="form-control" placeholder="Naturalidade" value="Corn&#xE9;lio&#x20;Proc&#xF3;pio">                                                            </div>
+                            </div>
+
+                            <div class="form-group" style="padding-bottom: 10px;">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Imagem
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="file" name="file" id="file" class="form-control">                                                            </div>
+                            </div>
+
+
+
+
+                            <div class="ln_solid"></div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Telefone
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <input type="text" name="telefone" class="form-control" placeholder="&#x28;99&#x29;&#x20;9999-9999" id="telefone" value="&#x28;44&#x29;&#x20;3028-4888">                                                            </div>
+
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Celular
+                                </label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" name="celular" class="form-control" placeholder="&#x28;99&#x29;&#x20;99999-9999" id="fone" value="&#x28;44&#x29;&#x20;99121-3104">                                                            </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">CPF
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" name="rua" class="form-control" placeholder="Rua" value="Rua&#x20;Mario&#x20;Jose&#x20;de&#x20;Farias&#x20;Ferraz,&#x20;136,&#x20;apto&#x20;04&#x20;-&#x20;bloco&#x20;102">                                                            </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Numero
+                                </label>
+                                <div class="col-md-2 col-sm-2 col-xs-12">
+                                    <input type="text" name="numero" class="form-control" placeholder="Numero" value="136">                                                            </div>
+
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Complemento
+                                </label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" name="complemento" class="form-control" placeholder="Apto,&#x20;Bloco..." value="apto&#x20;102&#x20;-&#x20;bl&#x20;04">                                                            </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Bairro
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <input type="text" name="bairro" class="form-control" placeholder="Bairro" value="Jd&#x20;Aeroporto">                                                            </div>
+
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Cidade
+                                </label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" name="cidade" class="form-control" placeholder="Cidade" value="Maring&#xE1;">                                                            </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Estado
+                                </label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <select name="estado" class="form-control"><option value="">Selecione</option>
+                                        <option value="Acre">Acre</option>
+                                        <option value="Alagoas">Alagoas</option>
+                                        <option value="Amap&#xE1;">Amapá</option>
+                                        <option value="Amazonas">Amazonas</option>
+                                        <option value="Bahia">Bahia</option>
+                                        <option value="Cear&#xE1;">Ceará</option>
+                                        <option value="Distrito&#x20;Federal">Distrito Federal</option>
+                                        <option value="Esp&#xED;rito&#x20;Santo">Espírito Santo</option>
+                                        <option value="Goi&#xE1;s">Goiás</option>
+                                        <option value="Maranh&#xE3;o">Maranhão</option>
+                                        <option value="Mato&#x20;Grosso">Mato Grosso</option>
+                                        <option value="Mato&#x20;Grosso&#x20;do&#x20;Sul">Mato Grosso do Sul</option>
+                                        <option value="Minas&#x20;Gerais">Minas Gerais</option>
+                                        <option value="Par&#xE1;">Pará</option>
+                                        <option value="Para&#xED;ba">Paraíba</option>
+                                        <option value="Paran&#xE1;" selected="selected">Paraná</option>
+                                        <option value="Pernambuco">Pernambuco</option>
+                                        <option value="Piau&#xED;">Piauí</option>
+                                        <option value="Rio&#x20;de&#x20;Janeiro">Rio de Janeiro</option>
+                                        <option value="Rio&#x20;Grande&#x20;do&#x20;Sul">Rio Grande do Sul</option>
+                                        <option value="Rio&#x20;Grande&#x20;do&#x20;Norte">Rio Grande do Norte</option>
+                                        <option value="Rond&#xF4;nia">Rondônia</option>
+                                        <option value="Roraima">Roraima</option>
+                                        <option value="Santa&#x20;Catarina">Santa Catarina</option>
+                                        <option value="S&#xE3;o&#x20;Paulo">São Paulo</option>
+                                        <option value="Sergipe">Sergipe</option>
+                                        <option value="Tocantins">Tocantins</option></select>                                                            </div>
+
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Cep
+                                </label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" name="cep" class="form-control" placeholder="cep" value="87055645">                                                            </div>
+
+                            </div>
+
+                            <div class="ln_solid"></div>
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">Status</label>
+                                <div class="col-md-2 col-sm-2 col-xs-12">
+                                    <select name="status" class="form-control"><option value="2">Inativo</option>
+                                        <option value="1" selected="selected">Ativo</option></select>                                                            </div>
+                            </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Imagem</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        <div class="box-body">
+
+
+
+                            <div id="resultImagem">
+
+                                <?php
+
+                                $file = $user->getFile();
+
+                                if(empty($file)){
+                                    ?>
+                                    <img width="210" height="137" src="http://placehold.it/210x137" alt="..." class="margin" />
+                                    <?php
+                                }else{
+                                    ?>
+                                    <img width="100%" src="<?php echo $this->basePath() . '/media/'.$user->getFile(); ?>" alt="..." class="margin" />
+
+                                    <button type="button" style="margin-top: 5px" class="btn btn-danger btn-block btn-flat apagarImg " controller="users" id="<?php echo $user->getId(); ?>"  >
+                                        <i class="fa fa-times-circle-o"></i> Apagar
+                                    </button>
+                                <?php } ?>
+
+                            </div>
+
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+
+                    <div class="x_content">
+
+
+                        <br />
+
+                        <div class="ln_solid"></div>
+
+                        <div class="form-group">
+
+
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+
+
+                                <a href="<?php echo $this->url('admin/default', ['controller' =>'users']) ?>"  class="btn btn-danger"><span class="glyphicon glyphicon-remove-sign"></span> Cancelar</a>
+
+                            </div>
+
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+
+                                <?= $this->formElement($form->get('submit')); ?>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <?= $this->form()->closeTag(); ?>
+
+        </div>
+
+        <!--img destaque-->
+
+        <!--end img destaque-->
+
+
+
+
+    </div>
+</div>
+
+<!-- /page content -->
+<script>
+
+    var cache_width = $('#renderPDF').width(); //Criado um cache do CSS
+    var a4  =[ 595.28,  841.89]; // Widht e Height de uma folha a4
+
+    function getPDF(){
+        // Setar o width da div no formato a4
+        $("#renderPDF").width((a4[0]*1.33333) -80).css('max-width','none');
+
+        // Aqui ele cria a imagem e cria o pdf
+        html2canvas($('#renderPDF'), {
+            onrendered: function(canvas) {
+                var img = canvas.toDataURL("image/png",1.0);
+                var doc = new jsPDF({unit:'px', format:'a4'});
+                doc.addImage(img, 'JPEG', 20, 20);
+                doc.save('<?= $user->getFullName(); ?>.pdf');
+                //Retorna ao CSS normal
+                $('#renderPDF').width(cache_width);
+            }
+        });
+    }
+
+
+</script>
+

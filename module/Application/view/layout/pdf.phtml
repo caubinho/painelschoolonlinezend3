@@ -1,0 +1,34 @@
+<html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="robots" content="noindex">
+            <style type="text/css">
+                *{font-family:  'open-sans' ;}
+            </style>
+
+            <link rel="stylesheet" type="text/css" media="all" href="http://<?php echo $_SERVER['HTTP_HOST']?>/theme/dashboard/css/print/grid.css">
+            <link rel="stylesheet" type="text/css" media="all"  href="https://s3-sa-east-1.amazonaws.com/pe85007/p8349/public/css/geral.css">
+            <link rel="stylesheet" type="text/css" media="all"  href="http://<?php echo $_SERVER['HTTP_HOST']?>/theme/dashboard/css/print/folha.css">
+            <link rel="stylesheet" type="text/css" media="all"  href="http://<?php echo $_SERVER['HTTP_HOST']?>/theme/dashboard/css/print/dados.css">
+            <link rel="stylesheet" type="text/css" media="all"  href="http://<?php echo $_SERVER['HTTP_HOST']?>/theme/dashboard/css/print/detalhamento.css">
+            <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+            <script src="http://<?php echo $_SERVER['HTTP_HOST']?>/theme/dashboard/vendors/jquery/dist/jquery.min.js"></script>
+            <script src="http://<?php echo $_SERVER['HTTP_HOST']?>/theme/dashboard/js/xepOnline.jqPlugin.js"></script>
+            <title>Visualizar Impressão</title>
+
+            <style type="text/css">
+                @media print {
+                    .noprint { display:none; }
+                    body { background: #fff; }
+                }
+            </style>
+        </head>
+        <body>
+       <!-- page content -->
+        <?php echo $this->content;  ?>
+        <!-- /page content -->
+
+
+        </body>
+</html>

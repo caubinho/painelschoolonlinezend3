@@ -1,0 +1,297 @@
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu" xmlns="http://www.w3.org/1999/html">
+
+    <div class="menu_section">
+        <h3>Menu</h3>
+        <ul class="nav side-menu">
+            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="<?php echo $this->url('admin/default', ['controller' => 'home']) ?>">Página Inicial</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-sitemap"></i> Aulas <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="<?php echo $this->url('admin/modulo', ['controller' => 'course']) ?>">Listar Modulos</a></li>
+                    <li><a href="<?php echo $this->url('admin/trabalho', ['action' => 'list'],[ 'query' => ['aluno' => $this->identity()->getId() ]]) ?>">Trabalhos</a></li>
+                </ul>
+            </li>
+
+            <li><a><i class="fa fa-usd"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="<?php echo $this->url('admin/default',
+                            ['controller' => 'boleto', 'action' => 'view', 'id' => $this->identity()->getId()]); ?>"> Boletos</a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+            <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Cursos <span class="label label-success pull-right">Em Breve!</span></a>
+            </li>
+
+            <br>
+
+            <li><a><i class="fa fa-university"></i> Polos <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+
+                    <li>
+                        <a href="<?php echo $this->url('admin/default', ['controller' => 'polo', 'action' => 'view']); ?>">
+                            Ver</a></li>
+
+                </ul>
+            </li>
+
+
+
+
+            <li><a><i class="fa fa-user"></i> Perfil <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="<?php echo $this->url('admin/default',
+                            ['controller' => 'users', 'action' => 'perfil', 'id' => $this->identity()->getId()]); ?>">
+                            Editar</a>
+
+                        <a href="<?php echo $this->url('admin/default',
+                            ['controller' => 'users', 'action' => 'class']); ?>">
+                            Minhas Classes</a>
+
+
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
+
+    </div>
+
+    <?php
+
+    $nomeIdentidade = $this->identity()->getRole()->getNome();
+
+    if (($nomeIdentidade == 'Administrador') || ( $nomeIdentidade == 'Coordenador') || ($nomeIdentidade == 'Professor')) {
+
+        ?>
+        <div class="menu_section">
+
+            <h3>Área SPP</h3>
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-graduation-cap"></i> Turma <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'turma']); ?>">Listar</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('admin/default', ['controller' => 'turma', 'action' => 'new']); ?>">
+                                Cadastrar</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a><i class="fa fa-files-o"></i> Módulo <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'modulos']); ?>">Listar</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('admin/default', ['controller' => 'modulos', 'action' => 'new']); ?>">
+                                Cadastrar</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a><i class="fa fa-edit"></i> Aula <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'aula']); ?>">Listar</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('admin/default', ['controller' => 'aula', 'action' => 'new']); ?>">
+                                Cadastrar</a>
+                        </li>
+
+                        <li><a>Anexos<span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li class="sub_menu"><a>Vídeo</a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'videos']); ?>">Listar</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo $this->url('admin/default', ['controller' => 'videos', 'action' => 'new']); ?>">
+                                                Cadastrar</a></li>
+                                    </ul>
+
+                                </li>
+                                <li class="sub_menu"><a>Atividade</a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'atividade']); ?>">Listar</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo $this->url('admin/default', ['controller' => 'atividade', 'action' => 'new']); ?>">
+                                                Cadastrar</a></li>
+                                    </ul>
+
+                                </li>
+
+                                <li class="sub_menu"><a>Material</a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'material']); ?>">Listar</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo $this->url('admin/default', ['controller' => 'material', 'action' => 'new']); ?>">
+                                                Cadastrar</a></li>
+                                    </ul>
+
+                                </li>
+
+                                <li class="sub_menu"><a>Link</a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'link']); ?>">Listar</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo $this->url('admin/default', ['controller' => 'link', 'action' => 'new']); ?>">
+                                                Cadastrar</a></li>
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li><a><i class="fa fa-dollar"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+
+
+                        <li><a>Boleto<span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="<?php echo $this->url('admin/default', ['controller' => 'boleto']); ?>">Listar</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('admin/default', ['controller' => 'boleto', 'action' => 'new']); ?>">
+                                        Cadastrar</a></li>
+
+                                <li>
+                                    <a href="<?php echo $this->url('admin/default', ['controller' => 'boleto', 'action' => 'upload']); ?>">
+                                        Envio em Massa</a></li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+
+
+            </ul>
+        </div>
+
+
+        <?php
+    } else {}
+    ?>
+
+    <?php
+    if ($this->identity()->getRole()->getNome() !== 'Administrador') {
+    } else {
+        ?>
+        <div class="menu_section">
+
+
+            <ul class="nav side-menu">
+
+                <li><a><i class="fa fa-university"></i> Polo <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'polo']); ?>">Listar</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('admin/default', ['controller' => 'polo', 'action' => 'new']); ?>">
+                                Cadastrar</a></li>
+
+                    </ul>
+                </li>
+
+
+
+
+                <li><a><i class="fa fa-user"></i> Usuário/Aluno <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'users']); ?>">Listar</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('admin/default', ['controller' => 'users', 'action' => 'add']); ?>">
+                                Cadastrar</a></li>
+
+                    </ul>
+                </li>
+
+
+
+
+            </ul>
+        </div>
+
+        <div class="menu_section">
+
+            <h3>SetUp Sistema</h3>
+            <ul class="nav side-menu">
+
+                <li><a><i class="fa fa-university"></i> Função <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo $this->url('acl/default', ['controller' => 'roles']); ?>">Listar</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('acl/default', ['controller' => 'roles', 'action' => 'new']); ?>">
+                                Cadastrar</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a><i class="fa fa-graduation-cap"></i> Recursos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo $this->url('acl/default', ['controller' => 'resources']); ?>">Listar</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('acl/default', ['controller' => 'resources', 'action' => 'new']); ?>">
+                                Cadastrar</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a><i class="fa fa-users"></i> Privilegios <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo $this->url('acl/default', ['controller' => 'privileges']); ?>">Listar</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('acl/default', ['controller' => 'privileges', 'action' => 'new']); ?>">
+                                Cadastrar</a></li>
+
+                    </ul>
+                </li>
+
+
+                <li><a><i class="fa fa-gear"></i> SetUp <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'setup', 'action' => 'edit', 'id'=> '1']); ?>">Editar</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li><a><i class="fa fa-files-o"></i> Banner <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo $this->url('admin/default', ['controller' => 'banner']); ?>">Listar</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('admin/default', ['controller' => 'banner', 'action' => 'new']); ?>">
+                                Cadastrar</a></li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <?php
+    }
+    ?>
+
+
+</div>

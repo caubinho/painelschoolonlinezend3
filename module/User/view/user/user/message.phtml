@@ -1,0 +1,68 @@
+<?php
+$this->headTitle('Obrigado');
+?>
+
+<div class="">
+
+    <div id="wrapper">
+        <div id="login" class="form">
+
+            <section class="login_content" style="padding-top: 0px">
+                <h1>Recuperar Senha</h1>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+                            <?php if ($id=='sent'): ?>
+                                <p>
+                                    Um link para nova senha foi enviado no email informado.
+                                </p>
+                            <?php elseif ($id=='invalid-email'): ?>
+                                <p>
+                                    Não existe usuário com este email!.
+                                </p>
+                            <?php elseif ($id=='set'): ?>
+                                <p>
+                                    Nova senha criada com sucesso!.
+                                </p>
+                                <p>
+                                    Retorne para a pagina de <a href="<?= $this->url('login'); ?>">LOGIN</a>.
+                                </p>
+                            <?php elseif ($id=='invalid'): ?>
+                                <p>
+                                    Link inválido!
+                                </p>
+
+
+                            <?php elseif ($id=='failed'): ?>
+                                <p>
+
+                                Código de alteração expirado. Por favor  <a href="<?= $this->url('recover') ?>">CLIQUE AQUI </a> para tentar novamente!.
+                                </p>
+
+
+
+
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                <div class="clearfix"></div>
+                <div class="separator">
+
+                    <div class="clearfix"></div>
+                    <br />
+                    <div>
+                        <h1><img src="<?php echo $this->basePath('media/').$this->DadosSite()->dados()->getFile(); ?>"></h1>
+
+                        <p>©<?php echo date('Y'); ?> Todos direitos reservados</p>
+                    </div>
+                </div>
+                </form>
+            </section>
+        </div>
+
+
+    </div>
+</div>

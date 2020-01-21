@@ -1,0 +1,123 @@
+
+<div class="modal-content">
+
+    <div class="modal-body">
+
+
+
+        <div class="x_panel">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Cronograma de Aulas</h4>
+
+            </div>
+
+
+
+            <div class="x_content">
+
+                <div class="col-md-12 col-xs-12">
+
+                        <div class="x_content">
+                            <div id="resAlt">
+
+
+                            </div>
+                            
+                            <br />
+                            <form class="formModal form-horizontal form-label-left">
+
+                                <input type="hidden" id="turma" value="<?php  echo  $this->id; ?>">
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Módulo</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <select class="select2_single form-control" id="modulo" required="required" tabindex="-1">
+                                            <option value="">Selecione um Módulo</option>
+                                            <?php
+                                            foreach ($this->modulos as $modulo) {
+
+                                                ?>
+                                                <option value="<?php echo $modulo->getId(); ?>"><?php echo $modulo->getTitulo(); ?></option>
+                                                <?php
+                                            }
+                                            ?>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Aula</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <select class="select2_single form-control" id="aula" tabindex="-1" required="required">
+                                            <option value="">Selecione uma Aula</option>
+                                            <?php
+                                            foreach ($this->aulas as $aula) {
+                                                ?>
+                                                <option value="<?php echo $aula->getId(); ?>"><?php echo $aula->getTitulo(); ?></option>
+                                                <?php
+                                                }
+                                            ?>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Professor</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <select class="select2_single form-control" id="professor" tabindex="-1" required="required">
+                                            <option value="">Selecione um Professor</option>
+                                            <?php
+                                            foreach ($this->professor as $professor) {
+                                                ?>
+                                                <option value="<?php echo $professor->getId(); ?>"><?php echo $professor->getFullName(); ?></option>
+                                                <?php
+                                            }
+                                            ?>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Início</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+
+                                        <input type="date" id="inicioCron" name="inicio" min="2012-01-01" max="2030-01-01" step="1" class="form-control col-md-7 col-xs-12" required="required" >
+
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <button class="btn btn-md btn-primary anexarCronTurma pull-right"
+
+                                                href="javascript:void(0);" ><i class="fa fa-share"></i> Anexar</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+    </div>
+</div>
+

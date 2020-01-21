@@ -1,0 +1,262 @@
+<?php
+$this->headTitle('Editar Usuário');
+
+
+/** @var \User\Entity\User $post */
+$post = $this->user;
+
+$form = $this->form;
+
+
+
+
+$img = $form->get('file')->setAttributes([
+    'class'=>'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$form->get('submit')
+    ->setAttributes(['class'=>'btn btn-primary'])
+    ->setValue('Salvar');
+
+$form->prepare();
+?>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="loader"></div>
+
+        <div class="page-title" >
+            <div class="title_left" style="width:100%;">
+                <h3>Alterar Imagem do Usuário</h3>
+
+                <div class="clearfix"></div>
+
+
+                <div class="row">
+                    <div class="col-sm-11">
+                    </div>
+                    <div class="col-sm-1">
+
+                        <a class="btn btn-primary pull-right" href="javascript:history.back()">
+                            <i class="fa fa-reply"></i> Voltar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Imagem Original</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+
+                        <!-- image cropping -->
+                        <div class="container cropper">
+                            <div class="row">
+
+                                    <div class="img-container">
+                                        <img id="image" perfil="<?php echo $this->perfil; ?>" iduser ="<?php echo $post->getId(); ?>"src="<?php echo $this->basePath();?>/media/<?php echo $post->getFile(); ?>" alt="Picture">
+                                    </div>
+
+                            </div>
+
+
+
+
+
+                            <div class="row">
+                                <div class="col-md-12 docs-buttons">
+                                    <!-- <h3 class="page-header">Toolbar:</h3> -->
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="move" title="Move">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Mover Imagem">
+                            <span class="fa fa-arrows"></span>
+                          </span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="crop" title="Crop">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Demarcar Corte">
+                            <span class="fa fa-crop"></span>
+                          </span>
+                                        </button>
+                                    </div>
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Aumentar Imagem">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, 0.1)">
+                            <span class="fa fa-search-plus"></span>
+                          </span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Diminuir Imagem">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, -0.1)">
+                            <span class="fa fa-search-minus"></span>
+                          </span>
+                                        </button>
+                                    </div>
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary" data-method="move" data-option="-10" data-second-option="0" title="Mover Esquerda">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Mover Esquerda">
+                            <span class="fa fa-arrow-left"></span>
+                          </span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-method="move" data-option="10" data-second-option="0" title="Mover Direita">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Mover Direita">
+                            <span class="fa fa-arrow-right"></span>
+                          </span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="-10" title="Mover para cima">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Mover para cima">
+                            <span class="fa fa-arrow-up"></span>
+                          </span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="10" title="Mover para baixo">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Mover para baixo">
+                            <span class="fa fa-arrow-down"></span>
+                          </span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary" data-method="scaleX" data-option="-1" title="Inverter Horizontal">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Inverter Horizontal">
+                            <span class="fa fa-arrows-h"></span>
+                          </span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-method="scaleY" data-option="-1" title="Inverter Vertical">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Inverter Vertical">
+                            <span class="fa fa-arrows-v"></span>
+                          </span>
+                                        </button>
+                                    </div>
+
+                                    <div class="btn-group">
+
+                                        <button type="button" class="btn btn-primary" data-method="clear" title="Limpar">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Limpar">
+                            <span class="fa fa-remove"></span>
+                          </span>
+                                        </button>
+                                    </div>
+
+
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary" data-method="reset" title="Resetar">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Resetar">
+                            <span class="fa fa-refresh"></span>
+                          </span>
+                                        </button>
+
+                                    </div>
+
+                                    <div class="btn-group btn-group-crop">
+                                        <button type="button" class="btn btn-primary" data-method="getCroppedCanvas">
+                          <span class="docs-tooltip" data-toggle="tooltip" title="Cortar Imagem">
+                            Cortar Imagem
+                          </span>
+                                        </button>
+
+
+                                    </div>
+
+
+                                </div><!-- /.docs-buttons -->
+
+
+                            </div>
+                        </div>
+                        <!-- /image cropping -->
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Preview</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="box-body">
+                            <div class="container cropper">
+                                <div class="docs-preview clearfix">
+                                    <div class="img-preview preview-lg"></div>
+                                </div>
+                            </div>
+
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Imagem Salva</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        <div class="box-body">
+
+
+                            <?php
+
+                            $thumb = $post->getThumb();
+
+                            if(empty($thumb)){}else {
+
+                                ?>
+
+                                <img width="100%" src="<?php echo $this->basePath(); ?>/media/thumb/<?php echo $post->getThumb(); ?>">
+
+                                <?php
+                            }
+                            ?>
+
+
+
+
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!--img destaque-->
+
+        <!--end img destaque-->
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+

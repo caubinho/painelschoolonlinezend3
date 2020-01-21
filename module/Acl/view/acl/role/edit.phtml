@@ -1,0 +1,201 @@
+<?php
+$this->headTitle('Editar Função');
+
+
+
+$nome = $form->get('nome')->setAttributes([
+    'class'         =>'form-control',
+    'placeholder'   =>'Digite um titulo',
+])->setLabelAttributes(['class' => 'control-label']);
+
+$parent = $form->get('parent')->setAttributes([
+    'class'         => 'form-control',
+
+])->setLabelAttributes(['class' => 'control-label']);
+
+$admin = $form->get('isAdmin')->setAttributes([
+    'class'         => 'form-control',
+])->setLabelAttributes(['class' => 'control-label']);
+
+
+$form->get('submit')
+    ->setAttributes(['class'=>'btn btn-primary'])
+    ->setValue('Salvar');
+
+$form->prepare();
+?>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Função</h3>
+
+                <div class="clearfix"></div>
+                <p>
+                    <a class="btn btn-default" href="
+    <?= $this->url('admin/default', ['controller' => 'roles', 'action'=>'new']); ?>">
+                        <i class="fa fa-plus-circle"></i> Novo
+                    </a>
+
+                    <a class="btn btn-default" href="
+    <?= $this->url('admin/default', ['controller' => 'roles']); ?>">
+                        <i class="fa fa-navicon"></i> Listar
+                    </a>
+                </p>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Editar</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <?php
+                        $flash = $this->flashMessenger();
+                        $flash->setMessageOpenFormat('<div%s>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <ul><li>')
+                            ->setMessageSeparatorString('</li><li>')
+                            ->setMessageCloseString('</li></ul></div>');
+
+                        echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+                        echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
+                        echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
+                        echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+
+                        ?>
+
+
+
+
+                        <br />
+                        <?= $this->form()->openTag($form); ?>
+
+                                       <div class="ln_solid"></div>
+
+
+
+
+                        <?php $message = $this->formElementErrors($nome, ['class' => 'help-block']); ?>
+
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Título <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                <?= $this->formElement($nome); ?>
+                                <?= $message ?>
+
+                            </div>
+                        </div>
+
+
+
+                        <?php $message = $this->formElementErrors($parent, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Herda <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($parent); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+
+                        <?php $message = $this->formElementErrors($admin, ['class' => 'help-block']); ?>
+                        <div class="form-group<?= $message ? " has-error" : "" ?>">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Admin? <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <?= $this->formElement($admin); ?>
+                                <?= $message ?>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                        <div class="ln_solid"></div>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-xs-12">
+                <div class="x_panel">
+
+                </div>
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+
+                    <div class="x_content">
+
+
+                        <br />
+
+                        <div class="ln_solid"></div>
+
+                        <div class="form-group">
+
+
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+
+
+                                <a href="<?php echo $this->url('acl/default', ['controller' =>'roles']) ?>"  class="btn btn-danger"><span class="glyphicon glyphicon-remove-sign"></span> Cancelar</a>
+
+                            </div>
+
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+
+                                <?= $this->formElement($form->get('submit')); ?>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <?= $this->form()->closeTag(); ?>
+
+        </div>
+
+        <!--img destaque-->
+
+        <!--end img destaque-->
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
